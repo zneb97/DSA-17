@@ -81,7 +81,7 @@ You will be expected to follow the Honor Code while doing work for this class.
 - Bubble sort
 - Insertion sort
 - Mergesort
-- Quicksort 
+- Quicksort
 - Heapsort
 
 #### Weeks 7-8: Trees
@@ -96,7 +96,7 @@ You will be expected to follow the Honor Code while doing work for this class.
 - Topological sort
 - Shortest Path Algorithms (Dijkstra and A*)
 
-#### Weeks 12-13: Dynamic Programming
+#### Weeks 12-13: Dynamic Programming and Greedy Algorithms
 
 #### Weeks 14-15: Challenge Problems and Applications
 
