@@ -1,30 +1,35 @@
 public class MyArrayList {
+    private Cow[] elems;
+	private int size;
 
-	public MyArrayList(){
+	public MyArrayList() {
 		// TODO
 	}
 
-	public void add(Cow c){
+	public MyArrayList(int capacity) {
 		// TODO
 	}
 
-	public int size(){
+	public void add(Cow c) {
+		// TODO
+	}
+
+	public int size() {
 		// TODO
 		return -1;
 	}
 
-	public Cow get(int index){
+	public Cow get(int index) {
 		// TODO
 		return null;
 	}
 
-	public Cow remove(int index){
+	public Cow remove(int index) {
 		// TODO
 		return null;
 	}
 
-	public void add(int index, Cow c){
+	public void add(int index, Cow c) {
 		// TODO
 	}
-
 }
