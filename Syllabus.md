@@ -21,10 +21,11 @@ Your teachers are Hieu Nguyen, David Abrahams, Sidd Singal, and Katie Hite. Your
 This is class is a **4 credit Independent Study** (IS) in engineering. Note that it does not fulfill your OSS requirement.
 
 ### Office Hours
-- Sarah Walters: Wed 8-10pm, Thu 9-11pm
-- Deniz Celik: Mon 6-8pm, Wed 6-8pm
-- Nitya Dhanushkodi: Mon 8-10pm, Thu 6-8pm
-- Mike Bocamazo: Sun 7-11pm
+
+- Monday: 6-8pm Deniz, 8-10pm Nitya
+- Wednesday: 6-8pm Deniz, 8-10pm Sarah
+- Thursday: 6-8pm Nitya, 9-11pm Sarah
+- Sunday: 7-11pm Mike
 
 If you need help and it's not during office hours, check out our Slack channel, [#dsa-17](https://olin.slack.com/archives/dsa-17). We advise using it over emailing us when you have code questions (but emailing us is great too). Other people might have the same questions, so using the Slack channel can help them out too.
 
