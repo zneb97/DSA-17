@@ -76,5 +76,5 @@ If you're itching to write more code, try implementing one (or more) of the foll
 
 - Given an array with an odd number of elements, find the median without sorting.  
 - We call an array circularly sorted if there exists some starting index after which the entire list is sorted (allows wrapping back around to the beginning). For instance, `[8,9,10,6,7]` is circularly sorted with starting index 3. `[3, 5, 6, 4, 5]` is not circularly sorted. Write a function that will return the starting index of the sorted (in ascending order) array, or -1 if there is none.
-- Given an array of unique integers and an integer `n`, return the number of pairs of integers in that array who sum to the input `n`. Do not reuse elements. For example,`numPairs([1,7,3,4,5,2],8)` returns 2: `[1,7]` and `[3,5]`. Note that it does not return `4, 4`.
+- Given an array of unique integers and an integer `n`, return the number of pairs of integers in that array who sum to the input `n`. Do not reuse elements. For example,`numPairs([1,7,3,4,5,2],8)` returns 2: `[1,7]` and `[3,5]`. Note that it does not return `3`, because `[4, 4]` does not count.
 - Find the longest sorted substring of an input array. Return an array of size 2: the starting and ending indices of said substring.
