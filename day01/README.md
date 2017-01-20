@@ -69,3 +69,12 @@ The tests you will be running on your `MyArrayList` class will be using this `Co
     `public void add(int index, Cow c)`
 
 7. Thanks to your help, Sidd's milk business has really gotten off the ground. He is able to expand his farm and is able to accept lots of cows. Modify your code so that we can **optimally** perform resizes. We never want to allocate more space than we need to, but we should also have an *average* insertion time complexity of `O(1)`. Make sure that your `MyArrayList` stays above 25% full. This will require halving the size of your array if it is less than 25% full, and doubling the size of it when it fills up. Think carefully about what your code will do: when down-sizing, make sure to have a "lower limit" so that the array does not eventually resize to length 1. You may find the function [`System.arraycopy`](https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#arraycopy(java.lang.Object,%20int,%20java.lang.Object,%20int,%20int)) helpful.
+
+## Totally Optional
+
+If you're itching to write more code, try implementing one (or more) of the following in class problems in Java:
+
+- Given an array with an odd number of elements, find the median without sorting.  
+- We call an array circularly sorted if there exists some starting index after which the entire list is sorted (allows wrapping back around to the beginning). For instance, `[8,9,10,6,7]` is circularly sorted with starting index 3. `[3, 5, 6, 4, 5]` is not circularly sorted. Write a function that will return the starting index of the sorted (in ascending order) array, or -1 if there is none.
+- Given an array of unique integers and an integer `n`, return the number of pairs of integers in that array who sum to the input `n`. Do not reuse elements. For example,`numPairs([1,7,3,4,5,2],8)` returns 2: `[1,7]` and `[3,5]`. Note that it does not return `4, 4`.
+- Find the longest sorted substring of an input array. Return an array of size 2: the starting and ending indices of said substring.
