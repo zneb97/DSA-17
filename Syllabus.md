@@ -44,6 +44,7 @@ We have a set of expectations for this course, both for instructors and for stud
 #### Students
 
 - Professional conduct
+- Accommodate and respect all experience levels
 - Complete work, come to class, and be engaged.
 - Treat the course, the instructors, and the ninjas with respect
 - Communicate with instructors (provide constructive feedback, let us know if you’re falling behind or won’t be in class)
