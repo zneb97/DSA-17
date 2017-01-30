@@ -13,7 +13,7 @@ public class MyLinkedListTest {
 
 	// QUESTIONS 1-7. COMMENT THIS LINE FOR GENERICS TESTING
 	// private MyLinkedList chickens;
-	// private MyLinkedList emptyChickens;
+	 //private MyLinkedList emptyChickens;
 
 	// GENERICS TESTING. COMMENT THIS LINE FOR QUESTIONS 1-7
 	private MyLinkedList<Chicken> chickens;
