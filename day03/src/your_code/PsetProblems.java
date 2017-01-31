@@ -9,7 +9,7 @@ public class PsetProblems {
         return -1;
     }
 
-    public static StackADT<Integer> sortStackLimitedMemory(StackADT s) {
+    public static StackADT<Integer> sortStackLimitedMemory(StackADT<Integer> s) {
         // TODO
         return null;
     }
