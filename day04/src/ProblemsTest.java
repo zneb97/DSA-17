@@ -7,7 +7,6 @@ import static org.hamcrest.CoreMatchers.*;
 
 import java.util.*;
 
-import org.junit.Before;
 import org.junit.Test;
 
 public class ProblemsTest {
@@ -42,6 +41,29 @@ public class ProblemsTest {
         assertThat(m.get(2), is(4));
         assertThat(m.get(3), is(3));
 
+    }
+
+
+    /**
+     * Test method for {@link Problems#removeKDigits(int[], int)}.
+     */
+    @Test
+    public void testRemoveKDigits() {
+        int[] in = new int[]{1,4,3,2,2,1,9};
+        Object[] out = Problems.removeKDigits(in, 3).toArray();
+        assertThat(out, is(new Integer[] {1, 2, 1, 9}));
+
+        in = new int[]{1, 0, 2, 0, 0};
+        out = Problems.removeKDigits(in, 1).toArray();
+        assertThat(out, is(new Integer[] {0, 2, 0, 0}));
+
+        in = new int[]{8, 5, 9, 3, 4, 3};
+        out = Problems.removeKDigits(in, 2).toArray();
+        assertThat(out, is(new Integer[] {5, 3, 4, 3}));
+
+        in = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
+        out = Problems.removeKDigits(in, 5).toArray();
+        assertThat(out, is(new Integer[] {1, 2, 3, 4}));
     }
 
     private Node<Integer> arrToNodes(int[] arr) {

@@ -1,8 +1,14 @@
+import java.util.List;
 import java.util.Map;
 
 public class Problems {
 
     public static Map<Integer, Integer> getCountMap(int[] arr) {
+        // TODO: your code here
+        return null;
+    }
+
+    public static List<Integer> removeKDigits(int[] num, int k) {
         // TODO: your code here
         return null;
     }
