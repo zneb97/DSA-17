@@ -1,3 +1,5 @@
+import java.util.NoSuchElementException;
+
 public class MyLinkedList<T> {
 
 	private Node head;
@@ -79,11 +81,13 @@ public class MyLinkedList<T> {
 	public T remove(int index) {
         //0 size edge case
         if (size == 0) {
-            throw new IndexOutOfBoundsException("Not a valid index");
+           throw new NoSuchElementException();
         }
+        //Edge case, can't anchor if index is the head
         if (index == 0) {
             return removeFirst();
         }
+        //Edge case, can't anchor if index is the tail
         if (index == size-1) {
             return removeLast();
         }
@@ -102,7 +106,7 @@ public class MyLinkedList<T> {
 	public T removeFirst() {
         //0 size edge case
         if(size == 0){
-            throw new IndexOutOfBoundsException("Not a valid index");
+           return null;
         }
 
         T save = head.val;
@@ -123,7 +127,7 @@ public class MyLinkedList<T> {
 	public T removeLast() {
         //0 size edge case
 		if(size == 0) {
-			throw new IndexOutOfBoundsException("Not a valid index");
+			return null;
 		}
 
         Node save = tail;

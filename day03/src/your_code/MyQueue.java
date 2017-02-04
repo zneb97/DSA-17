@@ -2,31 +2,48 @@ package your_code;
 
 import ADTs.QueueADT;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.NoSuchElementException;
+
 /**
  * An implementation of the Queue interface.
  */
 public class MyQueue implements QueueADT<Integer> {
+    LinkedList list;
+
+    public MyQueue(){
+        list = new LinkedList();
+    }
 
     @Override
     public void enqueue(Integer item) {
-        // TODO
+        list.addLast(item);
     }
 
     @Override
     public Integer dequeue() {
-        // TODO
-        return null;
+        if(list.size() == 0){
+            throw new NoSuchElementException("Stack is empyty");
+        }
+        int save = (int)list.getFirst();
+        list.removeFirst();
+        return save;
     }
 
     @Override
     public boolean isEmpty() {
-        // TODO
-        return false;
+       if(list.size()==0){
+           return true;
+       }
+       return false;
     }
 
     @Override
     public Integer front() {
-        // TODO
-        return null;
+        if(list.size() == 0){
+            throw new NoSuchElementException("Stack is empyty");
+        }
+        return (int)list.getFirst();
     }
 }
