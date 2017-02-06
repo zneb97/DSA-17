@@ -119,7 +119,7 @@ public class ProblemsTest {
         Node<Integer> n6 = arrToNodes(a6);
         assertThat(Problems.sumLists(n5, n6), is(case3));
 
-        // Case 3: zeros
+        // Case 4: zeros
         int[] a7 = {0};
         int[] a8 = {0};
         int case4 = 0;
@@ -127,6 +127,15 @@ public class ProblemsTest {
         Node<Integer> n7 = arrToNodes(a7);
         Node<Integer> n8 = arrToNodes(a8);
         assertThat(Problems.sumLists(n7, n8), is(case4));
+
+        // Case 5: random numbers
+        int[] a9 = {7, 6, 6, 5, 1};
+        int[] a10 = {5, 0, 7, 2, 1, 0};
+        int case5 = 583861;
+
+        Node<Integer> n9 = arrToNodes(a9);
+        Node<Integer> n10 = arrToNodes(a10);
+        assertThat(Problems.sumLists(n9, n10), is(case5));
     }
 
 }
