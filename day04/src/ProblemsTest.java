@@ -49,21 +49,31 @@ public class ProblemsTest {
      */
     @Test
     public void testRemoveKDigits() {
-        int[] in = new int[]{1,4,3,2,2,1,9};
+        int[] in = new int[]{1, 4, 3, 2, 2, 1, 9};
         Object[] out = Problems.removeKDigits(in, 3).toArray();
-        assertThat(out, is(new Integer[] {1, 2, 1, 9}));
+        assertThat(out, is(new Integer[]{1, 2, 1, 9}));
 
         in = new int[]{1, 0, 2, 0, 0};
         out = Problems.removeKDigits(in, 1).toArray();
-        assertThat(out, is(new Integer[] {0, 2, 0, 0}));
+        assertThat(out, is(new Integer[]{0, 2, 0, 0}));
 
         in = new int[]{8, 5, 9, 3, 4, 3};
         out = Problems.removeKDigits(in, 2).toArray();
-        assertThat(out, is(new Integer[] {5, 3, 4, 3}));
+        assertThat(out, is(new Integer[]{5, 3, 4, 3}));
 
         in = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
         out = Problems.removeKDigits(in, 5).toArray();
-        assertThat(out, is(new Integer[] {1, 2, 3, 4}));
+        assertThat(out, is(new Integer[]{1, 2, 3, 4}));
+
+        in = new int[]{1, 2, 3, 1, 5, 6, 7, 2, 9};
+        out = Problems.removeKDigits(in, 4).toArray();
+        assertThat(out, is(new Integer[]{1, 1, 5, 2, 9}));
+
+        in = new int[]{5, 2, 12, 18, 8, 23, 19, 6, 28, 6, 3, 3, 3, 15, 28, 7, 18, 25, 10, 0, 3, 27, 11, 19, 14, 2, 1, 0,
+                26, 18, 6, 14, 15, 23, 13, 16, 23, 1, 6, 25, 6, 20, 5, 15, 0, 20, 14, 28, 23, 22};
+        out = Problems.removeKDigits(in, 25).toArray();
+        assertThat(out, is(new Integer[]{0, 1, 0, 26, 18, 6, 14, 15, 23, 13, 16, 23, 1, 6, 25, 6, 20, 5, 15, 0, 20, 14,
+                28, 23, 22}));
     }
 
     private Node<Integer> arrToNodes(int[] arr) {
