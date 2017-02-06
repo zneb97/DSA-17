@@ -142,4 +142,5 @@ public class MyLinearMapTest {
 		assertThat(keySet.contains(0), is(true));
 		assertThat(keySet.contains(4), is(false));
 	}
+
 }

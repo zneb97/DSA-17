@@ -6,145 +6,182 @@ import java.util.*;
  */
 public class MyLinearMap<K, V> implements Map<K, V> {
 
-	private List<Entry> entries = new ArrayList<Entry>();
+    private List<Entry> entries = new ArrayList<Entry>();
 
-	public class Entry implements Map.Entry<K, V> {
-		private K key;
-		private V value;
+    public class Entry implements Map.Entry<K, V> {
+        private K key;
+        private V value;
 
-		public Entry(K key, V value) {
-			this.key = key;
-			this.value = value;
-		}
+        public Entry(K key, V value) {
+            this.key = key;
+            this.value = value;
+        }
 
-		@Override
-		public K getKey() {
-			return key;
-		}
-		@Override
-		public V getValue() {
-			return value;
-		}
-		@Override
-		public V setValue(V newValue) {
-			value = newValue;
-			return value;
-		}
-	}
+        @Override
+        public K getKey() {
+            return key;
+        }
+        @Override
+        public V getValue() {
+            return value;
+        }
+        @Override
+        public V setValue(V newValue) {
+            value = newValue;
+            return value;
+        }
+    }
 
-	@Override
-	public void clear() {
-		entries.clear();
-	}
+    @Override
+    public void clear() {
+        entries.clear();
+    }
 
-	@Override
-	public boolean containsKey(Object target) {
-		return findEntry(target) != null;
-	}
+    @Override
+    public boolean containsKey(Object target) {
+        return findEntry(target) != null;
+    }
 
-	// Returns the entry that contains the target key, or null if there is none.
-	private Entry findEntry(Object target) {
-		// TODO
-		return null;
-	}
+    // Returns the entry that contains the target key, or null if there is none.
+    private Entry findEntry(Object target) {
+        for(int i = 0; i < entries.size(); i++){
+            if ((entries.get(i).getKey() == target) && (target == null)) {
+                return entries.get(i); //Weird edge case where null is the key you are looking for
+            }
+            else if(entries.get(i).getKey() == target) {
+                return entries.get(i);
+            }
+        }
+        return null;
+    }
 
-	// Compares two keys or two values, handling null correctly.
-	private boolean equals(Object target, Object obj) {
-		if (target == null) {
-			return obj == null;
-		}
-		return target.equals(obj);
-	}
+// Compares two keys or two values, handling null correctly.
+    private boolean equals(Object target, Object obj) {
+        if (target == null) {
+            return obj == null;
+        }
+        return target.equals(obj);
+    }
 
-	@Override
-	public boolean containsValue(Object target) {
-		for (Map.Entry<K, V> entry: entries) {
-			if (equals(target, entry.getValue())) {
-				return true;
-			}
-		}
-		return false;
-	}
+    @Override
+    public boolean containsValue(Object target) {
+        for (Map.Entry<K, V> entry: entries) {
+            if (equals(target, entry.getValue())) {
+                return true;
+            }
+        }
+        return false;
+    }
 
-	@Override
-	public Set<Map.Entry<K, V>> entrySet() {
-		throw new UnsupportedOperationException();
-	}
+    @Override
+    public Set<Map.Entry<K, V>> entrySet() {
+        throw new UnsupportedOperationException();
+    }
 
-	@Override
-	public V get(Object key) {
-		// TODO
-		return null;
-	}
+    @Override
+    public V get(Object key) {
+        if(equals(findEntry(key),null)) {
+            return null;
+        }
+        else {
+            if (!equals(findEntry(key).getValue(), null)) {
+                return findEntry(key).getValue();
+            }
+            else{
+                return null;
+            }
+        }
+    }
 
-	@Override
-	public boolean isEmpty() {
-		return entries.isEmpty();
-	}
+    @Override
+    public boolean isEmpty() {
+        return entries.isEmpty();
+    }
 
-	@Override
-	public Set<K> keySet() {
-		Set<K> set = new HashSet<K>();
-		for (Entry entry: entries) {
-			set.add(entry.getKey());
-		}
-		return set;
-	}
+    @Override
+    public Set<K> keySet() {
+        Set<K> set = new HashSet<K>();
+        for (Entry entry: entries) {
+            set.add(entry.getKey());
+        }
+        return set;
+    }
 
-	@Override
-	public V put(K key, V value) {
-		// TODO
-		return null;
-	}
+    @Override
+    public V put(K key, V value) {
+        if(!equals(findEntry(key),null)){
+            V save = findEntry(key).getValue();
+            findEntry(key).setValue(value);
+            return save;
 
-	@Override
-	public void putAll(Map<? extends K, ? extends V> map) {
-		for (Map.Entry<? extends K, ? extends V> entry: map.entrySet()) {
-			put(entry.getKey(), entry.getValue());
-		}
-	}
+        }
+        else{
+            Entry newKey = new Entry(key, value);
+            entries.add(newKey);
+            return null;
+        }
 
-	@Override
-	public V remove(Object key) {
-		// TODO
-		return null;
-	}
+    }
 
-	@Override
-	public int size() {
-		return entries.size();
-	}
+    @Override
+    public void putAll(Map<? extends K, ? extends V> map) {
+        for (Map.Entry<? extends K, ? extends V> entry: map.entrySet()) {
+            put(entry.getKey(), entry.getValue());
+        }
+    }
 
-	@Override
-	public Collection<V> values() {
-		Set<V> set = new HashSet<V>();
-		for (Entry entry: entries) {
-			set.add(entry.getValue());
-		}
-		return set;
-	}
+    @Override
+    public V remove(Object key) {
+        int index = -1;
+        for(int i = 0; i < entries.size(); i++){
+            if(equals(entries.get(i).getKey(), key));
+                index = i;
+                break;
+        }
+        if(index != -1){
+            V save = entries.get(index).getValue();
+            entries.remove(index);
+            return save;
+        }
+        return null;
+    }
 
-	public static void main(String[] args) {
-		Map<String, Integer> map = new MyLinearMap<String, Integer>();
-		map.put("Word1", 1);
-		map.put("Word2", 2);
-		Integer value = map.get("Word1");
-		System.out.println(value);
+    @Override
+    public int size() {
+        return entries.size();
+    }
 
-		for (String key: map.keySet()) {
-			System.out.println(key + ", " + map.get(key));
-		}
-	}
+    @Override
+    public Collection<V> values() {
+        Set<V> set = new HashSet<V>();
+        for (Entry entry: entries) {
+            set.add(entry.getValue());
+        }
+        return set;
+    }
 
-	/**
-	 * Returns a reference to `entries`.
-	 *
-	 * This is not part of the Map interface; it is here to provide the functionality
-	 * of `entrySet` in a way that is substantially simpler than the "right" way.
-	 *
-	 * @return
-	 */
-	protected Collection<? extends java.util.Map.Entry<K, V>> getEntries() {
-		return entries;
-	}
+    public static void main(String[] args) {
+        Map<String, Integer> map = new MyLinearMap<String, Integer>();
+        map.put("Word1", 1);
+        map.put("Word2", 2);
+        Integer value = map.get("Word1");
+        System.out.println(value);
+
+        for (String key: map.keySet()) {
+            System.out.println(key + ", " + map.get(key));
+        }
+    }
+
+    /**
+     * Returns a reference to `entries`.
+     *
+     * This is not part of the Map interface; it is here to provide the functionality
+     * of `entrySet` in a way that is substantially simpler than the "right" way.
+     *
+     * @return
+     */
+    protected Collection<? extends java.util.Map.Entry<K, V>> getEntries() {
+        return entries;
+    }
+
 }

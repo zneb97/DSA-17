@@ -18,7 +18,7 @@ public class ProblemsTest {
     public void testCountMap() {
         int[] in = new int[]{1, 1, 3, 4, 1, 4, 5};
         Map m = Problems.getCountMap(in);
-        assertThat(m.get(1), is(3));
+        assertThat(m.get(1), is((int) 3));
         assertThat(m.get(3), is(1));
         assertThat(m.get(4), is(2));
         assertThat(m.get(5), is(1));
