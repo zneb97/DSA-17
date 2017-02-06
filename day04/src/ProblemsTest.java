@@ -7,6 +7,7 @@ import static org.hamcrest.CoreMatchers.*;
 
 import java.util.*;
 
+import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
 public class ProblemsTest {
@@ -18,28 +19,28 @@ public class ProblemsTest {
     public void testCountMap() {
         int[] in = new int[]{1, 1, 3, 4, 1, 4, 5};
         Map m = Problems.getCountMap(in);
-        assertThat(m.get(1), is((int) 3));
-        assertThat(m.get(3), is(1));
-        assertThat(m.get(4), is(2));
-        assertThat(m.get(5), is(1));
+        assertThat(m.get(1), CoreMatchers.<Object>is((int) 3));
+        assertThat(m.get(3), CoreMatchers.<Object>is(1));
+        assertThat(m.get(4), CoreMatchers.<Object>is(2));
+        assertThat(m.get(5), CoreMatchers.<Object>is(1));
 
         in = new int[]{3, 4, 1, 4, 4};
         m = Problems.getCountMap(in);
-        assertThat(m.get(3), is(1));
-        assertThat(m.get(4), is(3));
-        assertThat(m.get(1), is(1));
+        assertThat(m.get(3), CoreMatchers.<Object>is(1));
+        assertThat(m.get(4), CoreMatchers.<Object>is(3));
+        assertThat(m.get(1), CoreMatchers.<Object>is(1));
 
         in = new int[]{1, 2, 3, 4};
         m = Problems.getCountMap(in);
-        assertThat(m.get(1), is(1));
-        assertThat(m.get(2), is(1));
-        assertThat(m.get(3), is(1));
-        assertThat(m.get(4), is(1));
+        assertThat(m.get(1), CoreMatchers.<Object>is(1));
+        assertThat(m.get(2), CoreMatchers.<Object>is(1));
+        assertThat(m.get(3), CoreMatchers.<Object>is(1));
+        assertThat(m.get(4), CoreMatchers.<Object>is(1));
 
         in = new int[]{2, 3, 2, 3, 2, 3, 2};
         m = Problems.getCountMap(in);
-        assertThat(m.get(2), is(4));
-        assertThat(m.get(3), is(3));
+        assertThat(m.get(2), CoreMatchers.<Object>is(4));
+        assertThat(m.get(3), CoreMatchers.<Object>is(3));
 
     }
 
@@ -51,19 +52,19 @@ public class ProblemsTest {
     public void testRemoveKDigits() {
         int[] in = new int[]{1,4,3,2,2,1,9};
         Object[] out = Problems.removeKDigits(in, 3).toArray();
-        assertThat(out, is(new Integer[] {1, 2, 1, 9}));
+        assertThat(out, CoreMatchers.<Object[]>is(new Integer[] {1, 2, 1, 9}));
 
         in = new int[]{1, 0, 2, 0, 0};
         out = Problems.removeKDigits(in, 1).toArray();
-        assertThat(out, is(new Integer[] {0, 2, 0, 0}));
+        assertThat(out, CoreMatchers.<Object[]>is(new Integer[] {0, 2, 0, 0}));
 
         in = new int[]{8, 5, 9, 3, 4, 3};
         out = Problems.removeKDigits(in, 2).toArray();
-        assertThat(out, is(new Integer[] {5, 3, 4, 3}));
+        assertThat(out, CoreMatchers.<Object[]>is(new Integer[] {5, 3, 4, 3}));
 
         in = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
         out = Problems.removeKDigits(in, 5).toArray();
-        assertThat(out, is(new Integer[] {1, 2, 3, 4}));
+        assertThat(out, CoreMatchers.<Object[]>is(new Integer[] {1, 2, 3, 4}));
     }
 
     private Node<Integer> arrToNodes(int[] arr) {
