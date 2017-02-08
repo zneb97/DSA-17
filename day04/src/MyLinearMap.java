@@ -45,10 +45,7 @@ public class MyLinearMap<K, V> implements Map<K, V> {
     // Returns the entry that contains the target key, or null if there is none.
     private Entry findEntry(Object target) {
         for(int i = 0; i < entries.size(); i++){
-            if ((entries.get(i).getKey() == target) && (target == null)) {
-                return entries.get(i); //Weird edge case where null is the key you are looking for
-            }
-            else if(entries.get(i).getKey() == target) {
+            if ((equals(entries.get(i).getKey(), target))) {
                 return entries.get(i);
             }
         }
@@ -83,13 +80,8 @@ public class MyLinearMap<K, V> implements Map<K, V> {
         if(equals(findEntry(key),null)) {
             return null;
         }
-        else {
-            if (!equals(findEntry(key).getValue(), null)) {
-                return findEntry(key).getValue();
-            }
-            else{
-                return null;
-            }
+        else{
+            return findEntry(key).getValue();
         }
     }
 
@@ -118,7 +110,7 @@ public class MyLinearMap<K, V> implements Map<K, V> {
         else{
             Entry newKey = new Entry(key, value);
             entries.add(newKey);
-            return null;
+            return value;
         }
 
     }

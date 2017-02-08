@@ -6,6 +6,7 @@ public class Problems {
 
     public static Map<Integer, Integer> getCountMap(int[] arr) {
         MyLinearMap counts = new MyLinearMap();
+
         for(int i = 0; i < arr.length; i++){
             //If exists already, increment
             if(counts.containsKey(arr[i])){
@@ -58,6 +59,8 @@ public class Problems {
         int sum2 = 0;
         Node<Integer> saveHead1 = h1;
         Node<Integer> saveHead2 = h2;
+
+        //Get lengths of each list
         while(h1 != null){
             length1++;
             h1 = h1.next;
@@ -66,6 +69,8 @@ public class Problems {
             length2++;
             h2 = h2.next;
         }
+
+        //Sum each element of each list, multiplied by its corresponded 10^ place
         for(int i = length1; i >= 0; i--){
             sum1 += (saveHead1.data * (Math.pow(10,i)));
             saveHead1 = saveHead1.next;
@@ -74,6 +79,7 @@ public class Problems {
             sum2 += (saveHead2.data * (Math.pow(10,j)));
             saveHead2 = saveHead2.next;
         }
+
         return (int)(sum1+sum2);
     }
 
