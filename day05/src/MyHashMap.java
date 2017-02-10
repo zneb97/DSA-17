@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -43,28 +44,50 @@ public class MyHashMap<K, V> implements Map<K, V> {
 	 * Initialize maps
 	 */
 	protected void makeMaps(int size) {
-		// TODO: Implement this method
-	}
+	    maps = new ArrayList<>();
+		for(int i = 0; i < size; i++){
+            maps.add(new MyLinearMap<K, V>());
+        }
+    }
 
 	protected MyLinearMap<K, V> chooseMap(Object key) {
-		// TODO: Implement this method
-		return null;
+	    if(key == null){
+	        return maps.get(0);
+        }
+		int map = key.hashCode()%maps.size();
+		return maps.get(map);
 	}
 
 	@Override
 	public boolean containsKey(Object key) {
-		// TODO
-		return false;
+		MyLinearMap<K,V> submap = chooseMap(key);
+        return submap.containsKey(key);
 	}
 
 	@Override
 	public boolean containsValue(Object value) {
-		// TODO
-		return false;
+		for(int i = 0; i < maps.size(); i++){
+		    MyLinearMap<K,V> submap = maps.get(i);
+		    if(submap.containsValue(value)){
+		        return true;
+            }
+        }
+        return false;
 	}
 
 	protected void rehash(double growthFactor) {
-		// TODO: Implement this method
+        List<MyLinearMap<K,V>> save = maps;
+
+        //Make new map
+        int resize = (int)(growthFactor*maps.size());
+        makeMaps(resize);
+
+        //Repopulate new resized map with old values
+        for(MyLinearMap<K,V> submap: save){
+            for(Map.Entry<K,V> keyVals : submap.getEntries()){
+                put(keyVals.getKey(), keyVals.getValue());
+            }
+        }
 	}
 
 	@Override
@@ -75,14 +98,37 @@ public class MyHashMap<K, V> implements Map<K, V> {
 
 	@Override
 	public V put(K key, V value) {
-		// TODO
-		return null;
+		MyLinearMap<K,V> submap = chooseMap(key);
+
+		//See if it adds a key or not
+		size -= submap.size();
+		V save = submap.put(key, value);
+		size += submap.size();
+
+		//Resize if need be
+		if(size() > maps.size()*ALPHA){
+		    size = 0;
+		    rehash(GROWTH_FACTOR);
+        }
+        return save;
+
 	}
 
 	@Override
 	public V remove(Object key) {
-		// TODO
-		return null;
+		MyLinearMap<K,V> submap = chooseMap(key);
+
+		//See if it adds a key or not
+		size -= submap.size();
+		V save = submap.remove(key);
+		size += submap.size();
+
+		//Resize if need be
+		if(size() < maps.size()*BETA){
+		    size = 0;
+		    rehash(SHRINK_FACTOR);
+        }
+        return save;
 	}
 
 	@Override
