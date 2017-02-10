@@ -39,10 +39,13 @@ public class WikiPhilosophy {
 		// Right now, this method tries the first link on the page, and if it is the destination, it returns true
 		// TODO: fix this method.
 		// Loop until reach limit, get stuck in a loop, reach a page with no links, or reach the destination
-		Element elt = getFirstValidLink(source);
-		String url = elt.attr("abs:href");
-		if (url.equals(destination))
-			return true;
+        for(int i = 0; i < limit; i++){
+            Element elt = getFirstValidLink(source);
+            String url = elt.attr("abs:href");
+            if (url.equals(destination))
+                return true;
+            source = url;
+        }
 		return false;
 	}
 
