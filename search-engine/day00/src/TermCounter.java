@@ -22,7 +22,7 @@ public class TermCounter {
 	}
 
 	public int size() {
-		// TODO
+		// Total # of words
 		return 0;
 	}
 
