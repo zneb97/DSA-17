@@ -42,7 +42,7 @@ public class Index {
 		newCount.processElements(paragraphs);
 		Set<String> keySet = newCount.keySet();
 		for(String key : keySet){
-			this.add(key,newCount);
+			add(key,newCount);
 		}
 
 
