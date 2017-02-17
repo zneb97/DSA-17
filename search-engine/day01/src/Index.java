@@ -1,4 +1,5 @@
 import org.jsoup.select.Elements;
+import redis.clients.jedis.Jedis;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -10,19 +11,35 @@ public class Index {
 
     // Index: map of words to URL and their counts
     private Map<String, Set<TermCounter>> index = new HashMap<String, Set<TermCounter>>();
+    private static Set<String> stopWords;
+    private static Jedis jedis;
+
+    public Index(){
+        try {
+            stopWords = new StopWords().getStopWords();
+            jedis = new JedisMaker().make();
+        }catch(IOException e){
+            System.out.print("IOException, did not get stopwords, or jedis failed");
+        }
+
+
+    }
+
 
     public void add(String term, TermCounter tc) {
         // TODO
         // if we're seeing a term for the first time, make a new Set
         // otherwise we can add the term to an existing Set
-        if(index.containsKey(term)){
-            HashSet<TermCounter> insert =  (HashSet<TermCounter>)(index.get(term));
-            insert.add(tc);
-            index.put(term,insert);
-        }else{
-            HashSet<TermCounter> insert = new HashSet<TermCounter>();
-            insert.add(tc);
-            index.put(term, insert);
+        if(!stopWords.contains(term)) {
+            if (index.containsKey(term)) {
+                HashSet<TermCounter> insert = (HashSet<TermCounter>) (index.get(term));
+                insert.add(tc);
+                index.put(term, insert);
+            } else {
+                HashSet<TermCounter> insert = new HashSet<TermCounter>();
+                insert.add(tc);
+                index.put(term, insert);
+            }
         }
     }
 
