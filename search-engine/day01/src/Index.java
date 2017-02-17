@@ -39,9 +39,9 @@ public class Index {
         }
     }
 
-    public Set<String> get(String term) {
+    public Map<String,String> get(String term) {
         if(jedis.exists(term)){
-            return jedis.hkeys(term);
+            return jedis.hgetAll(term);
 
         }else{
             throw new NullPointerException();
