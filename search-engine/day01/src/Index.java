@@ -89,8 +89,11 @@ public class Index {
             System.out.println(term);
 
             // for each term, print the pages where it appears
-            <String> tcs = get(term);
-            for (String tc: tcs) {
+            
+
+            Map<String, String> tcs = get(term);
+            for (String tc: tcs.keySet()) {
+
                 String count = jedis.hget(term, tc);
                 System.out.println("    " + term + " " + tc + "  " +  count);
             }
