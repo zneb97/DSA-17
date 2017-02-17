@@ -3,6 +3,7 @@ import org.jsoup.select.Elements;
 import redis.clients.jedis.Jedis;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
@@ -34,7 +35,14 @@ public class Crawler {
 	 * @throws IOException
 	 */
 	public void crawl(int limit) throws IOException {
-		// TODO
+		for(String page : queue){
+		    if(limit != 0) {
+                Elements paragraphs = wf.readWikipedia(page);
+                queueInternalLinks(paragraphs);
+                index.indexPage(page, paragraphs);
+                limit--;
+            }
+        }
 	}
 
 	void queueInternalLinks(Elements paragraphs) {
