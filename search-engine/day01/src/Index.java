@@ -89,7 +89,7 @@ public class Index {
             System.out.println(term);
 
             // for each term, print the pages where it appears
-            Set<String> tcs = get(term);
+            <String> tcs = get(term);
             for (String tc: tcs) {
                 String count = jedis.hget(term, tc);
                 System.out.println("    " + term + " " + tc + "  " +  count);
