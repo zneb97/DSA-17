@@ -20,7 +20,7 @@ public class Crawler {
 
 	public Crawler(String source, Index index) {
 		this.index = index;
-		queue.offer(source);
+		queue.add(source);
 	}
 
 	public int queueSize() {
@@ -35,13 +35,15 @@ public class Crawler {
 	 * @throws IOException
 	 */
 	public void crawl(int limit) throws IOException {
-		while(limit != 0) {
-		        String page = queue.remove();
-                Elements paragraphs = wf.readWikipedia(page);
+		while((limit != 0)&&(queue.size()>0)) {
+                String page = queue.remove();
+                System.out.println("This is page ::   " + page);
+                Elements paragraphs = wf.readWikipedia("https://en.wikipedia.org/wiki/Java_(programming_language)");
                 queueInternalLinks(paragraphs);
                 index.indexPage(page, paragraphs);
-                limit--;
-            }
+
+            limit--;
+        }
 	}
 
 	void queueInternalLinks(Elements paragraphs) {
@@ -58,7 +60,7 @@ public class Crawler {
 			
 			if (relURL.startsWith("/wiki/")) {
 				String absURL = "https://en.wikipedia.org" + relURL;
-				queue.offer(absURL);
+				queue.add(absURL);
 			}
 		}
 	}
@@ -69,21 +71,20 @@ public class Crawler {
 		Index index = new Index();
 		String source = "https://en.wikipedia.org/wiki/Java_(programming_language)";
 		Crawler wc = new Crawler(source, index);
+		try {
+            wc.crawl(1);
+        }catch(IOException e){
+		    System.out.print("Ya done fucked up");
+        }
 
 		// for testing purposes, load up the queue
-		Elements paragraphs = wf.fetchWikipedia(source);
-		wc.queueInternalLinks(paragraphs);
+		//Elements paragraphs = wf.fetchWikipedia(source);
+		//wc.queueInternalLinks(paragraphs);
 
-        // TODO: Crawl outward starting at source
-
-		// TODO: Test that your index contains multiple pages.
-		// Here is some sample code that tests your index, which assumes
-		// you have written a getCounts() method in Index, which returns
-		// a map from {url: count} for a given keyword
-		// Map<String, Integer> map = index.getCounts("programming");
-		// for (Map.Entry<String, Integer> entry: map.entrySet()) {
-		// 	System.out.println(entry);
-		// }
+		 Map<String, String> map = index.get("programming");
+		 for (Map.Entry<String, String> entry: map.entrySet()) {
+		 	System.out.println(entry);
+		 }
 
 	}
 }
