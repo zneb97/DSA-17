@@ -37,8 +37,8 @@ public class Crawler {
 	public void crawl(int limit) throws IOException {
 		while((limit != 0)&&(queue.size()>0)) {
                 String page = queue.remove();
-                System.out.println("This is page ::   " + page);
-                Elements paragraphs = wf.readWikipedia("https://en.wikipedia.org/wiki/Java_(programming_language)");
+                //System.out.println("This is page ::   " + (page));
+                Elements paragraphs = wf.fetchWikipedia(page);
                 queueInternalLinks(paragraphs);
                 index.indexPage(page, paragraphs);
 
@@ -71,15 +71,13 @@ public class Crawler {
 		Index index = new Index();
 		String source = "https://en.wikipedia.org/wiki/Java_(programming_language)";
 		Crawler wc = new Crawler(source, index);
-		try {
-            wc.crawl(1);
-        }catch(IOException e){
-		    System.out.print("Ya done fucked up");
-        }
 
 		// for testing purposes, load up the queue
-		//Elements paragraphs = wf.fetchWikipedia(source);
-		//wc.queueInternalLinks(paragraphs);
+		Elements paragraphs = wf.fetchWikipedia(source);
+		wc.queueInternalLinks(paragraphs);
+
+        wc.crawl(10);
+
 
 		 Map<String, String> map = index.get("programming");
 		 for (Map.Entry<String, String> entry: map.entrySet()) {
