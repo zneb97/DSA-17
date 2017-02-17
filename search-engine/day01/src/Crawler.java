@@ -35,14 +35,13 @@ public class Crawler {
 	 * @throws IOException
 	 */
 	public void crawl(int limit) throws IOException {
-		for(String page : queue){
-		    if(limit != 0) {
+		while(limit != 0) {
+		        String page = queue.remove();
                 Elements paragraphs = wf.readWikipedia(page);
                 queueInternalLinks(paragraphs);
                 index.indexPage(page, paragraphs);
                 limit--;
             }
-        }
 	}
 
 	void queueInternalLinks(Elements paragraphs) {
