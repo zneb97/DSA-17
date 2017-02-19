@@ -79,8 +79,8 @@ public class Crawler {
         wc.crawl(10);
 
 
-		 Map<String, String> map = index.get("programming");
-		 for (Map.Entry<String, String> entry: map.entrySet()) {
+		 Map<String, Integer> map = index.get("programming");
+		 for (Map.Entry<String, Integer> entry: map.entrySet()) {
 		 	System.out.println(entry);
 		 }
 

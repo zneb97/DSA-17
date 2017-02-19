@@ -41,12 +41,19 @@ public class Index {
 
     public Map<String,Integer> get(String term) {
         Map<String, Integer> counts = new HashMap();
-        Set<String> urls = jedis.smembers(term);
+        Set<String> urls = jedis.smembers(" " + term);
         for (String url: urls) {
-            String count = jedis.hget(url, term);
+            String count = jedis.hget(" " + url, term);
             counts.put(url, Integer.valueOf(count));
         }
         return counts;
+//        Set<String> urlSet = jedis.smembers("urlSet: " + term);
+//        Map<String, Integer> countMap = new HashMap();
+//        for (String url: urlSet) {
+//            String count = jedis.hget("TermCounter: " + url, term);
+//            countMap.put(url, Integer.valueOf(count));
+//        }
+//        return countMap;
     }
 
     public void indexPage(String url, Elements paragraphs) {

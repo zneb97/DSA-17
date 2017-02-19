@@ -68,16 +68,16 @@ public class WikiSearch {
     }
 
 
-    public static class Comparator{
-        public int compare(Object entry1, Object entry2){
-            return ((Map.Entry<String,Integer>)entry1).getValue().compareTo(((Map.Entry<String,Integer>)entry2).getValue());
-        }
-    }
     // Sort the results by relevance.
     public List<Entry<String, Integer>> sort() {
-        Comparator compare = new Comparator();
         List<Entry<String, Integer>> sorted = new LinkedList(map.entrySet());
-        Collections.sort(sorted, compare);
+        Collections.sort(sorted, new Comparator() {
+            public int compare(Object entry1, Object entry2) {
+                return ((Comparable) ((Map.Entry) (entry1)).getValue())
+                        .compareTo(((Map.Entry) (entry2)).getValue());
+            }
+        });
+        return sorted;
     }
 
 
