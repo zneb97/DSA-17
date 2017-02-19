@@ -1,6 +1,5 @@
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
 
 import redis.clients.jedis.Jedis;
@@ -10,14 +9,19 @@ public class WikiSearch {
     // map from URLs that contain the term(s) to relevance score
     private Map<String, Integer> map;
 
+    private Index index;
+
     public WikiSearch(Map<String, Integer> map) {
-        this.map = map;
+            this.map = map;
     }
 
     public Integer getRelevance(String url) {
-        // TODO
-        return null;
+        if(map.get(url)==null){
+            return 0;
+        }
+        return map.get(url);
     }
+
 
     // Prints the contents in order of term frequency.
     private  void print() {
@@ -29,32 +33,51 @@ public class WikiSearch {
 
     // Computes the union of two search results.
     public WikiSearch or(WikiSearch that) {
-        // TODO
-        return null;
+        for(String url : that.map.keySet()){
+                map.put(url, that.getRelevance(url)+this.getRelevance(url));
+        }
+        return this;
     }
 
     // Computes the intersection of two search results.
     public WikiSearch and(WikiSearch that) {
-        // TODO
-        return null;
+        Map<String, Integer> andResult = new HashMap<>();
+        for(String url : that.map.keySet()){
+            if((map.containsKey(url))){
+                andResult.put(url, that.getRelevance(url)+this.getRelevance(url));
+            }
+        }
+        return new WikiSearch(andResult);
     }
 
     // Computes the intersection of two search results.
     public WikiSearch minus(WikiSearch that) {
-        // TODO
-        return null;
+        for(String url : that.map.keySet()){
+            if((map.containsKey(url))){
+                map.remove(url);
+            }
+        }
+        return this;
     }
+
+
 
     // Computes the relevance of a search with multiple terms.
-    protected int totalRelevance(Integer rel1, Integer rel2) {
-        // TODO
-        return 0;
+    protected int totalRelevance(Integer rel1, Integer rel2){
+        return rel1+rel2;
     }
 
+
+    public static class Comparator{
+        public int compare(Object entry1, Object entry2){
+            return ((Map.Entry<String,Integer>)entry1).getValue().compareTo(((Map.Entry<String,Integer>)entry2).getValue());
+        }
+    }
     // Sort the results by relevance.
     public List<Entry<String, Integer>> sort() {
-        // TODO
-        return null;
+        Comparator compare = new Comparator();
+        List<Entry<String, Integer>> sorted = new LinkedList(map.entrySet());
+        Collections.sort(sorted, compare);
     }
 
 
@@ -63,7 +86,7 @@ public class WikiSearch {
         // TODO: Use the index to get a map from URL to count
 
         // Fix this
-        Map<String, Integer> map = null;
+        Map<String, Integer> map = index.get(term);
 
         // Store the map locally in the WikiSearch
         return new WikiSearch(map);
@@ -75,7 +98,7 @@ public class WikiSearch {
 
         // make a Index
         Jedis jedis = JedisMaker.make();
-        Index index = new Index(jedis); // You might need to change this, depending on how your constructor works.
+        Index index = new Index(); // You might need to change this, depending on how your constructor works.
 
         // search for the first term
         String term1 = "java";
