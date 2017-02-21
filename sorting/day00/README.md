@@ -49,11 +49,11 @@ Now that you have warmed up, solve this same problem in two dimensions. An eleme
 
 Can you solve this in `O(N log N)` time? Think about "flattening" the array by selecting the max element from each column, and using the 1-D method.
 
-If you're having trouble understanding the `N log N` solution, you can read through the [MIT lecture notes](https://drive.google.com/open?id=0B6e9zByuhpVPeHFNRU9DRkNVclU). on this problem. If you prefer watching lecture to reading notes, [here's the accompanying lecture](https://youtu.be/HtSuA80QTyo?t=15m26s).
+If you're having trouble understanding the `N log N` solution, you can read through the [MIT lecture notes](https://drive.google.com/open?id=0B6e9zByuhpVPeHFNRU9DRkNVclU) on this problem. If you prefer watching a lecture to reading notes, [here's the accompanying lecture](https://youtu.be/HtSuA80QTyo?t=15m26s).
 
 ##### Can we do better?
 
-Think about how you would improve the `N log N` algorithm. Is it possible to do this problem in linear (`O(N)`) time?
+Think about how you would improve the `N log N` algorithm. Is it possible to do this problem in `O(N)` time?
 
 **Implement `int[] findTwoDPeak(int[][] nums)`, where `answer[0]` is the row index and `answer[1]` is the column index of any peak. In other words, the peak is `nums[answer[0]][answer[1]]`.**
 
