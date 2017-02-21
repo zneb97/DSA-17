@@ -1,4 +1,4 @@
-# Sorting Day00 - `InsertionSort`, `MergeSort` and `QuickSort`
+# Sorting Day00 - `InsertionSort`, `MergeSort`, `QuickSort`, and Binary Search.
 
 ## Learning Goals
 
@@ -12,7 +12,7 @@ By doing this assignment, you should be able to:
   
 ## Assignment
 
-### Code
+### Sorts
 
 - Draw the recursive trees (see [here](https://docs.google.com/presentation/d/1mNRb1tx3ibY2FjKkcXqJvjfDnT0vkxfYKEf38HrU26Y/edit?usp=sharing)) of the merge sort algorithm for the input array `[4,8,62,9,14,19]`. Show (a photo of) this to your NINJA at checkoff.
 - In `InsertionSort.java`, `MergeSort.java`, and `QuickSort.java`, complete the `sort` method.
