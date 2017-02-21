@@ -19,6 +19,9 @@ public class QuickSort extends SortAlgorithm {
      * Partition the array around a pivot, then recursively sort the left and right
      * portions of the array. A test for this method is provided in `SortTest.java`
      * Optional: use Insertion Sort if the length of the array is <= INSERTION_THRESHOLD
+     *
+     * @param low The beginning index of the subarray being considered (inclusive)
+     * @param high The ending index of the subarray being considered (inclusive)
      */
     public void quickSort(int[] a, int low, int high) {
         // TODO
