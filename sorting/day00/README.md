@@ -51,10 +51,10 @@ There's an [MIT OCW lecture](https://youtu.be/HtSuA80QTyo?t=15m26s) entirely dev
 
 ### Reading
 
-- **required**: When you're done coding, in *Think Algorithms* read section **23.2** and **23.5**.
-- **if you get stuck**: **23.3** and **23.4** contain implementations of insertion and merge sort. We encourage you to implement them without copying the book code.
+- **only if you get stuck**: **23.2-23.5** in *Think Algorithms* contains implementations of insertion and merge sort, as well as analysis. We encourage you to implement them without copying the book code.
 
 ### Getting checked off
 
 - Talk your NINJA through your recursive trees for merge sort.
 - Talk your NINJA through the four commented complexities for the three sorting algorithms.
+- Talk your NINJA through both of your peak-finding algorithms, and their runtime complexities.
