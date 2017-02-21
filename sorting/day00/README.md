@@ -12,7 +12,13 @@ By doing this assignment, you should be able to:
   
 ## Assignment
 
-### Quicksort
+### Code
+
+- Draw the recursive trees (see [here](https://docs.google.com/presentation/d/1mNRb1tx3ibY2FjKkcXqJvjfDnT0vkxfYKEf38HrU26Y/edit?usp=sharing)) of the merge sort algorithm for the input array `[4,8,62,9,14,19]`. Show (a photo of) this to your NINJA at checkoff.
+- In `InsertionSort.java`, `MergeSort.java`, and `QuickSort.java`, complete the `sort` method.
+- For each `sort` function, detail the best, worst, and average case runtime complexity, as well as the space complexity, in the comments.
+
+#### Quicksort
 
 Because we did not cover quicksort today in class, part of your homework is watching [this](https://www.youtube.com/watch?v=852wJdsgl2I) MIT lecture on Quicksort. You will probably find it most helpful to watch it after finishing your implementation of insertion and merge sort.
 
@@ -24,12 +30,6 @@ This lecture goes a bit more into the math then you will require for DSA. You ar
 Feel free to watch at double speed!
 
 [Here](https://drive.google.com/open?id=0B_K4P69ad_l_RDY2U3VZUkpTY3M) are the corresponding powerpoint slides for the MIT lecture. [This](http://videolectures.net/mit6046jf05_leiserson_lec04/) website plays the video lecture side-by-side with the powerpoint lecture, with the downside of not being able to play faster than normal speed.
-
-### Code
-
-- Draw the recursive trees (see [here](https://docs.google.com/presentation/d/1mNRb1tx3ibY2FjKkcXqJvjfDnT0vkxfYKEf38HrU26Y/edit?usp=sharing)) of the merge sort algorithm for the input array `[4,8,62,9,14,19]`. Show (a photo of) this to your NINJA at checkoff.
-- In `InsertionSort.java`, `MergeSort.java`, and `QuickSort.java`, complete the `sort` method.
-- For each `sort` function, detail the best, worst, and average case runtime complexity, as well as the space complexity, in the comments.
 
 ### Peak-Finding
 
@@ -44,6 +44,10 @@ Now that you have warmed up, solve this same problem in two dimensions. An eleme
 Can you solve this in `O(N log N)` time? We are sure you can...but we want something faster than that. Implement `int[] findTwoDPeak(int[][] nums)`, where `answer[0]` is the row index and `answer[1]` is the column index of any peak. In other words, the peak is `nums[answer[0]][answer[1]]`.
 
 Hint: `1 + 2 + 4 + 8 + 16 + ... + N = O(N)`
+
+#### If you're really stuck
+
+There's an [MIT OCW lecture](https://youtu.be/HtSuA80QTyo?t=15m26s) entirely devoted to this problem. We also have the accompanying slides on the [DSA google drive](https://drive.google.com/open?id=0B_K4P69ad_l_TUoyTURNSXdqQzg).
 
 ### Reading
 
