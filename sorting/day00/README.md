@@ -31,6 +31,10 @@ Feel free to watch at double speed!
 
 [Here](https://drive.google.com/open?id=0B_K4P69ad_l_RDY2U3VZUkpTY3M) are the corresponding powerpoint slides for the MIT lecture. [This](http://videolectures.net/mit6046jf05_leiserson_lec04/) website plays the video lecture side-by-side with the powerpoint lecture, with the downside of not being able to play faster than normal speed.
 
+#### Reading
+
+- **only if you get stuck**: **23.2-23.5** in *Think Algorithms* contains implementations of insertion and merge sort, as well as analysis. We encourage you to implement them without copying the book code.
+
 ### Peak-Finding
 
 #### 1-D Array
@@ -58,10 +62,6 @@ Think about how you would improve the `N log N` algorithm. Is it possible to do 
 **Implement `int[] findTwoDPeak(int[][] nums)`, where `answer[0]` is the row index and `answer[1]` is the column index of any peak. In other words, the peak is `nums[answer[0]][answer[1]]`.**
 
 Hint: `1 + 2 + 4 + 8 + 16 + ... + N = O(N)`
-
-### Reading
-
-- **only if you get stuck**: **23.2-23.5** in *Think Algorithms* contains implementations of insertion and merge sort, as well as analysis. We encourage you to implement them without copying the book code.
 
 ### Getting checked off
 
