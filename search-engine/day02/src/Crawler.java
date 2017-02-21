@@ -76,7 +76,7 @@ public class Crawler {
 		Elements paragraphs = wf.fetchWikipedia(source);
 		wc.queueInternalLinks(paragraphs);
 
-        wc.crawl(10);
+        wc.crawl(50);
 
 
 		 Map<String, Integer> map = index.get("programming");

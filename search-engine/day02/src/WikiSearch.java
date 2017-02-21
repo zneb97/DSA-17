@@ -92,6 +92,33 @@ public class WikiSearch {
         return new WikiSearch(map);
     }
 
+    public static WikiSearch TfIdf(String[] terms){
+        Index index = new Index();
+        WikiSearch total = search(terms[0],index);
+        double[] termPages = new double[(terms.length)];
+        termPages[0] = total.map.size();
+        for(int i = 1; i < terms.length;i++){
+            WikiSearch cPage = search(terms[i],index);
+            total = total.or(cPage);
+            termPages[i] = (double)(cPage.map.size());
+        }
+
+        double tot = (double)(total.map.size());
+
+        WikiSearch finalMap = new WikiSearch(new  HashMap<String, Integer>());
+        for(int i = 0; i < terms.length;i++){
+            WikiSearch cPage = search(terms[i],index);
+            for(String key : cPage.map.keySet()){
+                cPage.map.put(key, (int)(cPage.getRelevance(key) * Math.log(tot/(1+termPages[i]))));
+            }
+            finalMap = finalMap.or(cPage);
+        }
+
+        return finalMap;
+
+    }
+
+
     // TODO: Choose an extension and add your methods here
 
     public static void main(String[] args) throws IOException {
@@ -116,5 +143,14 @@ public class WikiSearch {
         System.out.println("Query: " + term2 + " MINUS " + term1);
         WikiSearch intersection = search2.minus(search1);
         intersection.print();
+
+        System.out.println("Query: " + term2 + " OR " + term1);
+        intersection = search2.or(search1);
+        intersection.print();
+
+        System.out.println("Break");
+        TfIdf(new String[]{term1, term2}).print();
+
+
     }
 }
