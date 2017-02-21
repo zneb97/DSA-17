@@ -41,10 +41,10 @@ public class Index {
 
     public Map<String,Integer> get(String term) {
         Map<String, Integer> counts = new HashMap();
-        Set<String> urls = jedis.smembers(" " + term);
-        for (String url: urls) {
-            String count = jedis.hget(" " + url, term);
-            counts.put(url, Integer.valueOf(count));
+        Map<String,String> urls = jedis.hgetAll(term);
+        for (String url: urls.keySet()) {
+            String count = urls.get(url);
+            counts.put(url, Integer.parseInt(count));
         }
         return counts;
 //        Set<String> urlSet = jedis.smembers("urlSet: " + term);

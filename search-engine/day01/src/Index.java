@@ -89,7 +89,7 @@ public class Index {
             System.out.println(term);
 
             // for each term, print the pages where it appears
-            
+
 
             Map<String, String> tcs = get(term);
             for (String tc: tcs.keySet()) {
