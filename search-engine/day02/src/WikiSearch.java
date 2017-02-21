@@ -113,8 +113,8 @@ public class WikiSearch {
         search2.print();
 
         // compute the intersection of the searches
-        System.out.println("Query: " + term1 + " AND " + term2);
-        WikiSearch intersection = search1.and(search2);
+        System.out.println("Query: " + term2 + " MINUS " + term1);
+        WikiSearch intersection = search2.minus(search1);
         intersection.print();
     }
 }

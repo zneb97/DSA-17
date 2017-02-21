@@ -47,13 +47,6 @@ public class Index {
             counts.put(url, Integer.parseInt(count));
         }
         return counts;
-//        Set<String> urlSet = jedis.smembers("urlSet: " + term);
-//        Map<String, Integer> countMap = new HashMap();
-//        for (String url: urlSet) {
-//            String count = jedis.hget("TermCounter: " + url, term);
-//            countMap.put(url, Integer.valueOf(count));
-//        }
-//        return countMap;
     }
 
     public void indexPage(String url, Elements paragraphs) {
