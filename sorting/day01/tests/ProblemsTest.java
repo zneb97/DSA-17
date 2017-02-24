@@ -1,10 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertThat;
@@ -20,11 +17,11 @@ public class ProblemsTest {
 
     @Before
     public void setup() {
-        emptyCase = SortTest.generateRandomArrayOfSize(0);
-        oneCase = SortTest.generateRandomArrayOfSize(1);
-        twoCase = SortTest.generateRandomArrayOfSize(2);
-        fastCase = SortTest.generateRandomArrayOfSize(1000);
-        slowCase = SortTest.generateRandomArrayOfSize(10000);
+        emptyCase = HeapSortTest.generateRandomArrayOfSize(0);
+        oneCase = HeapSortTest.generateRandomArrayOfSize(1);
+        twoCase = HeapSortTest.generateRandomArrayOfSize(2);
+        fastCase = HeapSortTest.generateRandomArrayOfSize(1000);
+        slowCase = HeapSortTest.generateRandomArrayOfSize(10000);
     }
 
     @Test
