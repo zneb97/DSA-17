@@ -28,22 +28,19 @@ public class PeakFinding {
         return 0;
     }
 
-    // Return the index of the highest value along the X axis, with the given
-    // value for the Y axis
-    private static int maxX(int y, int[][] nums) {
+    // These two functions return the index of the highest value along the X or Y axis, with the given
+    // value for the other axis. Searches between hi (exclusive) and lo (inclusive)
+    private static int maxXIndex(int y, int lo, int hi, int[][] nums) {
         int maxIndex = -1;
-        for (int x = 0; x < nums[0].length; x++) {
+        for (int x = lo; x < hi; x++) {
             if (maxIndex == -1 || nums[y][x] > nums[y][maxIndex])
                 maxIndex = x;
         }
         return maxIndex;
     }
-
-    // Return the index of the highest value along the Y axis, with the given
-    // value for the X axis
-    private static int maxY(int x, int[][] nums) {
+    private static int maxYIndex(int x, int lo, int hi, int[][] nums) {
         int maxIndex = -1;
-        for (int y = 0; y < nums.length; y++) {
+        for (int y = lo; y < hi; y++) {
             if (maxIndex == -1 || nums[y][x] > nums[maxIndex][x])
                 maxIndex = y;
         }
