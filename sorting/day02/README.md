@@ -22,9 +22,9 @@ Fill in `countingSort(int[] A, int k)` in `CountingSort.java`. Note the runtime 
 
 In order to radix sort, we first have to be able to sort the array according to a certain digit.
 
-For this function, you will need to use an implementation of counting sort which actually keeps a reference to each value in your array. Think about what would happen if we used counting sort to sort the array `[12, 25, 88, 29]` by the 10s place. First, we generate the counts array `[0, 1, 2, 0, 0, 0, 0, 0, 1, 0]` (one number begins with `1`, two begin with `2`, etc.) Then, we generate our output array based on the counts array: `[1, 2, 2, 8]`. We no longer actually know what the original numbers were, so this implementation of counting sort cannot be used in radix sort.
+For this function, you will need to use an implementation of counting sort which actually keeps a reference to each value in your array. Think about what would happen if we used counting sort to sort the array `[35, 12, 88, 39]` by the 10s place. First, we generate the counts array `[0, 1, 0, 2, 0, 0, 0, 0, 1, 0]` (one number begins with `1`, two begin with `3`, one with `8`) Then, we generate our output array based on the counts array: `[1, 3, 3, 8]`. We no longer actually know what the original numbers were, so this implementation of counting sort cannot be used in radix sort.
 
-Start by watching [this](https://youtu.be/Nz1KZXbghj8?t=37m1s) MIT OCW lecture about counting sort, and an implementation that keeps references to each value. **Watch from 37:01-44:30**
+Start by watching [this](https://youtu.be/Nz1KZXbghj8?t=37m1s) MIT OCW lecture about counting sort, and an implementation that keeps references to each value. Watch from 37:01-44:30.
 
 The lecture notes are [here](https://drive.google.com/open?id=0B_K4P69ad_l_TTNDUFM1QzA3OFk), along with the pseudocode for counting sort on page 3.
 
@@ -33,6 +33,8 @@ Fill in `countingSortByDigit(int[] A, int b, int n)` in `RadixSort.java`. Note t
 ### Radix Sort
 
 Finally, fill in `radixSort(int[] A, int b, int k)` in `RadixSort.java`. Note the runtime in the comments. **Express your runtime in terms of n, b, and w.**
+
+If you're having trouble with radix sort, you can continue watching the [MIT lecture](https://youtu.be/Nz1KZXbghj8?t=44m30s). Watch up to 50:01. If you want to get into the math behind the runtime of radix sort, watch through the end.
 
 ## Problems
 

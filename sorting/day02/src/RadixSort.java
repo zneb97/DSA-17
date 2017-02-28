@@ -40,10 +40,9 @@ public class RadixSort {
      */
     static void radixSort(int[] A, int b) {
         // Calculate the upper-bound for numbers in A
-        int k = A[0];
+        int k = A[0] + 1;
         for (int i = 1; i < A.length; i++)
-            k = (A[i] > k) ? A[i] : k;
-        k++;
+            k = (A[i] + 1 > k) ? A[i] + 1 : k;
         int w = (int) Math.ceil(Math.log(k) / Math.log(b)); // w = log base b of k, word length of numbers
         // TODO: Perform radix sort
     }
