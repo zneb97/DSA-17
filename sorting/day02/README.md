@@ -16,7 +16,7 @@ By doing this assignment, you should be able to
 
 ### Counting Sort
 
-Fill in `countingSort(int[] A, int k)` in `CountingSort.java`. Note the runtime in the comments. **Express your runtime in terms of n and k.**
+Fill in `countingSort(int[] A)` in `CountingSort.java`. Note the runtime in the comments. **Express your runtime in terms of n and k.**
 
 ### Stable Counting Sort
 
@@ -32,7 +32,7 @@ Fill in `countingSortByDigit(int[] A, int b, int n)` in `RadixSort.java`. Note t
 
 ### Radix Sort
 
-Finally, fill in `radixSort(int[] A, int b, int k)` in `RadixSort.java`. Note the runtime in the comments. **Express your runtime in terms of n, b, and w.**
+Finally, fill in `radixSort(int[] A, int b)` in `RadixSort.java`. Note the runtime in the comments. **Express your runtime in terms of n, b, and w.**
 
 If you're having trouble with radix sort, you can continue watching the [MIT lecture](https://youtu.be/Nz1KZXbghj8?t=44m30s). Watch up to 50:01. If you want to get into the math behind the runtime of radix sort, watch through the end.
 
