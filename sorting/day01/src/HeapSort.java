@@ -16,28 +16,65 @@ public class HeapSort extends SortAlgorithm {
 
     // Recursively corrects the position of element indexed i: check children, and swap with larger child if necessary.
     public void heapify(int i) {
-        // TODO
+        int temp = 0;
+        if((leftChild(i)<size)&&(rightChild(i)<size)){
+                if(heap[leftChild(i)] >= heap[rightChild(i)]) {
+                    if(heap[leftChild(i)] > heap[i]){ //Left bigger
+                        temp = heap[i];
+                        heap[i] = heap[leftChild(i)];
+                        heap[leftChild(i)] = temp;
+                        heapify(leftChild(i));
+                    }
+                }
+                else {
+                    if (heap[rightChild(i)] > heap[i]) { //Right bigger
+                        temp = heap[i];
+                        heap[i] = heap[rightChild(i)];
+                        heap[rightChild(i)] = temp;
+                        heapify(rightChild(i));
+                    }
+                }
+
+        }
+        if(leftChild(i)< size) {
+            if (heap[i] < heap[leftChild(i)]) {
+                temp = heap[i];
+                heap[i] = heap[leftChild(i)];
+                heap[leftChild(i)] = temp;
+                heapify(leftChild(i));
+            }
+        }
+
+
     }
+
 
     // Given the array, build a heap by correcting every non-leaf's position.
     public void buildHeapFrom(int[] array) {
         this.heap = array;
         this.size = array.length;
-        // TODO
+        for(int i = size/2; i >=0; i--){
+            heapify(i);
+        }
     }
 
     /**
-     * Best-case runtime:
-     * Worst-case runtime:
-     * Average-case runtime:
+     * Best-case runtime: O(n log n)
+     * Worst-case runtime: O(n log n)
+     * Average-case runtime: O(n log n)
      *
-     * Space-complexity:
+     * Space-complexity: O(1)
      */
     @Override
     public int[] sort(int[] array) {
+        int temp = 0;
         buildHeapFrom(array);
         for (int i=size-1; i>0; i--) {
-            // TODO
+            temp = heap[0];
+            heap[0] = heap[i];
+            heap[i] = temp;
+            size--; //Cut off root
+            heapify(0);
         }
         return heap;
     }

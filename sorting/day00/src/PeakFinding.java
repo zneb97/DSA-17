@@ -1,3 +1,4 @@
+import java.util.NoSuchElementException;
 
 public class PeakFinding {
 
@@ -50,14 +51,76 @@ public class PeakFinding {
 
 
     public static int findOneDPeak(int[] nums){
-    	// TODO
-        return -1;
+        if(nums.length == 0){
+            throw new NoSuchElementException();
+        }
+        if(nums.length == 1){
+            return -1;
+        }
+        if(nums[0]>nums[1]){
+            return 0;
+        }
+        if(nums[nums.length-1] > nums[nums.length-2]){
+            return nums.length-1;
+        }
+    	if(peak(nums.length/2,nums) == 0){
+    	    return nums.length/2;
+        }
+        else{
+    	    int[]left = breakArray(nums,0,nums.length/2);
+            int[] right = breakArray(nums,0,nums.length/2);
+            int leftPeak = findOneDPeak(left);
+            int rightPeak = findOneDPeak(right);
+            if(leftPeak == -1){
+                return rightPeak;
+            }
+            else{
+                return leftPeak;
+            }
+        }
+    }
+
+    public static int[] breakArray(int[] nums, int start, int end){
+        int[] result = new int[end-start+1];
+        System.arraycopy(nums,start,result,0,result.length);
+        return result;
     }
 
     public static int[] findTwoDPeak(int[][] nums){
-    	// TODO: Optionally due by 2/23. Will be due on 2/27.
-        int[] answer = {-1,-1};
-        return answer;
+        //Get start values
+        int[] result = {0,0};
+        int xPos = nums[0].length/2;
+        int yPos= nums.length/2;
+        int half = nums.length/2;
+        int horizontal = peakX(xPos, yPos, nums);
+        int vertical = peakY(xPos, yPos, nums);
+
+        if(horizontal == 0 && vertical == 0){
+            result[0] = xPos;
+            result[1]= yPos;
+            return result;
+        }
+
+        while((horizontal != 0) || (vertical != 0)) {
+            //Reach end of one side of array
+            if(half/2 > 1){
+                half = half/2;
+            }
+            else{
+                half = 1;
+            }
+            //Update
+            //Move in direction of highest number
+            xPos += horizontal * half;
+            yPos += vertical * half;
+            horizontal = peakX(xPos, yPos, nums);
+            vertical = peakY(xPos, yPos, nums);
+        }
+
+        result[0] = xPos;
+        result[1] = yPos;
+        return result;
+
     }
 
 }

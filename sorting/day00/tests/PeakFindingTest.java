@@ -106,7 +106,7 @@ public class PeakFindingTest {
     @Test
     public void TwoDTest5() {
         int[][] nums = {
-                {0, 0, 9, 8, 0, 0, 0},
+                {0, 1, 2, 4, 5, 6, 7},
                 {0, 0, 0, 0, 0, 0, 0},
                 {0, 1, 0, 0, 0, 0, 0},
                 {0, 2, 0, 0, 0, 0, 0},
