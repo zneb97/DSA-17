@@ -1,9 +1,5 @@
 public class CountingSort {
-
-    /**
-     * Use counting sort to sort positive integer array A.
-     * Runtime: O(n+k)
-     */
+    
     static void countingSort(int[] A) {
         //Get max
         double max = Double.NEGATIVE_INFINITY;
