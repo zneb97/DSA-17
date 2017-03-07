@@ -27,7 +27,7 @@ public class AVLTree<T extends Comparable<T>> extends BinarySearchTree<T> {
      * Delete the minimum descendant of the given node.
      */
     @Override
-    protected TreeNode<T> deleteMin(TreeNode<T> n){
+    TreeNode<T> deleteMin(TreeNode<T> n){
         n = super.deleteMin(n);
         if(n != null) {
             n.height = 1 + Math.max(height(n.leftChild), height(n.rightChild));
