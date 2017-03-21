@@ -5,10 +5,6 @@ import java.util.Map;
 
 public class UndirectedGraph implements Graph {
 
-    private Map<Integer, List<Integer>> adj;  // Represent the graph using an adjacency list
-    private List<Integer> vertices;  // all vertices in the graph
-    private int numEdges;
-
     public UndirectedGraph(int n) {
         // TODO: Your code here
     }
