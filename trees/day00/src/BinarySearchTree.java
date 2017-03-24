@@ -1,3 +1,6 @@
+import javax.xml.soap.Node;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class BinarySearchTree<T extends Comparable<T>> {
@@ -28,10 +31,18 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
 
     public List<T> inOrderTraversal() {
-        // TODO
-        return null;
+        List<T> ordered = new LinkedList<T>();
+        return inOrderHelper(ordered, this.root);
     }
 
+    public List<T> inOrderHelper(List<T> ordered, TreeNode<T> current){
+        if(current != null) {
+            inOrderHelper(ordered, current.leftChild);
+            ordered.add(current.key);
+            inOrderHelper(ordered, current.rightChild);
+        }
+        return ordered;
+    }
     /**
      * Deletes a node from the BST using the following logic:
      * 1. If the node has a left child, replace it with its predecessor
@@ -66,8 +77,10 @@ public class BinarySearchTree<T extends Comparable<T>> {
             replacement = (n.hasRightChild()) ? n.rightChild : n.leftChild; // replacement is the non-null child
         else {
             // Case 3: two children
-            // TODO
-            replacement = null;
+            //tODO
+            replacement = findPredecessor(n);
+            delete(replacement);
+            replacement.moveChildrenFrom(n);
         }
 
         // Put the replacement in its correct place, and set the parent.
@@ -96,13 +109,47 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
 
     private TreeNode<T> findPredecessor(TreeNode<T> n) {
-        // TODO
+        TreeNode<T> back = n;
+        //No smaller child,
+        if (!n.hasLeftChild()) {
+            //Root check
+            while (back.parent != null) {
+                back = back.parent;
+                if (n.key.compareTo(back.key) > 0) {
+                    return back;
+                }
+            }
+        }
+        //Move branches, go to large end of branch
+        else {
+            back = n.leftChild;
+            while (back.rightChild != null) {
+                back = back.rightChild;
+            }
+            return back;
+        }
         return null;
     }
 
     private TreeNode<T> findSuccessor(TreeNode<T> n) {
-        // TODO
-        return null;
+        TreeNode<T> next = n;
+        //No larger child
+        if (!n.hasRightChild()) {
+            next = n.parent;
+            while (next != null && n.isRightChild()) {
+                n = next;
+                next = next.parent;
+            }
+        }
+        //Move branches, go to small end of branch
+        else {
+            next = n.rightChild;
+            while (next.leftChild != null) {
+                next = next.leftChild;
+            }
+        }
+
+        return next;
     }
 
     /**

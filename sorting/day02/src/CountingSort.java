@@ -1,5 +1,5 @@
 public class CountingSort {
-    
+
     static void countingSort(int[] A) {
         //Get max
         double max = Double.NEGATIVE_INFINITY;
