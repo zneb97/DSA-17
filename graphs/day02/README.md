@@ -15,7 +15,7 @@ Given a `List` of *unique* integers `A`, return all possible permutations of tha
 
 ## N-Queens
 
-Write a program that determines all possible configurations of N queens on an NxN chessboard such that no two of them attack each other. This means that no two queens can share a row, column, or diagonal. If you are confused regarding the rules of chess or how a queen can move, check our [this](https://www.chessusa.com/chess-rules.html) tutorial.
+Write a program that determines all possible configurations of N queens on an NxN chessboard such that no two of them attack each other. This means that no two queens can share a row, column, or diagonal. If you are confused regarding the rules of chess or how a queen can move, check out [this](https://www.chessusa.com/chess-rules.html) tutorial.
 
 For example, here is one of the two 4-queens solutions:
 
