@@ -16,7 +16,7 @@ public class Digraph implements Graph {
         vertices = new LinkedList<>();
         // initialize each adjacency list
         for (int v = 0; v < n; v++) {
-            adj.put(v, new LinkedList<>());
+            adj.put(v, new LinkedList<Integer>());
             vertices.add(v);
         }
     }
