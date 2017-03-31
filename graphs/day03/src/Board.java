@@ -64,18 +64,18 @@ public class Board {
         int k = 0;
         for(int i = 0; i < tiles.length; i++){
             for(int j = 0; j < tiles[0].length; j++) {
-                invertArray[k] = tiles[i][j]
+                invertArray[k] = tiles[i][j];
                 k ++;
             }
         }
-        int NumInvert = 0;
-        for(int k = 1; k < invertArray.length; k ++){
-            if(invertArray[k]< invertArray[k-1]){
-                NumInvert++;
+        int numInvert = 0;
+        for(int j = 1; j < invertArray.length; j ++){
+            if(invertArray[j]< invertArray[j-1]){
+                numInvert++;
             }
         }
 
-        if(NumInvert % 2 == 1){
+        if(numInvert % 2 == 1){
             return false;
         }
         return true;
