@@ -1,3 +1,5 @@
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -6,15 +8,22 @@ import java.util.List;
  */
 public class Board {
 
-    private int n;
+    private int n; //Number of moves
     public int[][] tiles;
     private int[][] goal = {{1, 2, 3}, {4, 5, 6}, {7, 8, 0}};
+    public static HashMap<Integer, int[]> Positions;
 
     /*
      * Set the global board size and tile state
      */
     public Board(int[][] b) {
-        // TODO: Your code here
+        n = 0;
+        tiles = b;
+        for(int i = 0; i < goal.length; i++){
+            for(int j = 0; j < goal[0].length; j++) {
+                Positions.put(goal[i][j], new int[]{i,j});
+            }
+        }
     }
 
     /*
@@ -22,8 +31,7 @@ public class Board {
      * class should  work for any puzzle size)
      */
     private int size() {
-    	// TODO: Your code here
-        return 0;
+        return tiles.length;
     }
 
     /*
@@ -31,24 +39,46 @@ public class Board {
      * Estimated cost from the current node to the goal for A* (h(n))
      */
     public int manhattan() {
-		// TODO: Your code here
-        return 0;
+        int total = 0;
+		for(int i = 0; i < tiles.length; i++){
+		    for(int j = 0; j < tiles[0].length; j++) {
+		        int[] ideal = Positions.get(tiles[i][j]);
+                if(tiles[i][j] != 0) total += Math.abs(ideal[0]- i) +  Math.abs(ideal[1]- j);
+            }
+        }
+        return total;
     }
 
     /*
      * Compare the current state to the goal state
      */
     public boolean isGoal() {
-    	// TODO: Your code here
-        return false;
+        return this.equals(goal);
     }
 
     /*
      * Returns true if the board is solvable
      */
     public boolean solvable() {
-    	// TODO: Your code here
-        return false;
+        int[] invertArray = new int[tiles.length * tiles.length];
+        int k = 0;
+        for(int i = 0; i < tiles.length; i++){
+            for(int j = 0; j < tiles[0].length; j++) {
+                invertArray[k] = tiles[i][j]
+                k ++;
+            }
+        }
+        int NumInvert = 0;
+        for(int k = 1; k < invertArray.length; k ++){
+            if(invertArray[k]< invertArray[k-1]){
+                NumInvert++;
+            }
+        }
+
+        if(NumInvert % 2 == 1){
+            return false;
+        }
+        return true;
     }
 
     /*
