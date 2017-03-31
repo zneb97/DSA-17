@@ -125,32 +125,37 @@ public class WikiSearch {
 
         // make a Index
         Jedis jedis = JedisMaker.make();
+
         Index index = new Index(); // You might need to change this, depending on how your constructor works.
 
         // search for the first term
-        String term1 = "java";
-        System.out.println("Query: " + term1);
-        WikiSearch search1 = search(term1, index);
-        search1.print();
+//        String term1 = "java";
+//        System.out.println("Query: " + term1);
+//        WikiSearch search1 = search(term1, index);
+//        search1.print();
+//
+//        // search for the second term
+//        String term2 = "programming";
+//        System.out.println("Query: " + term2);
+//        WikiSearch search2 = search(term2, index);
+//        search2.print();
+//
+//        // compute the intersection of the searches
+//        System.out.println("Query: " + term2 + " MINUS " + term1);
+//        WikiSearch intersection = search2.minus(search1);
+//        intersection.print();
+//
+//        System.out.println("Query: " + term2 + " OR " + term1);
+//        intersection = search2.or(search1);
+//        intersection.print();
+//
+//        System.out.println("Break");
+//        TfIdf(new String[]{term1, term2}).print();
 
-        // search for the second term
-        String term2 = "programming";
-        System.out.println("Query: " + term2);
-        WikiSearch search2 = search(term2, index);
-        search2.print();
 
-        // compute the intersection of the searches
-        System.out.println("Query: " + term2 + " MINUS " + term1);
-        WikiSearch intersection = search2.minus(search1);
-        intersection.print();
-
-        System.out.println("Query: " + term2 + " OR " + term1);
-        intersection = search2.or(search1);
-        intersection.print();
-
-        System.out.println("Break");
-        TfIdf(new String[]{term1, term2}).print();
-
+        System.out.println(jedis.hgetAll("the"));
+        System.out.println("Break:-----------------");
+        System.out.println(jedis.hgetAll("java"));
 
     }
 }
