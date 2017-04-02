@@ -1,7 +1,4 @@
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Board definition for the 8 Puzzle challenge
@@ -11,7 +8,7 @@ public class Board {
     private int n; //Number of moves
     public int[][] tiles;
     private int[][] goal = {{1, 2, 3}, {4, 5, 6}, {7, 8, 0}};
-    public static HashMap<Integer, int[]> Positions;
+    public HashMap<Integer, int[]> Positions;
 
     /*
      * Set the global board size and tile state
@@ -19,10 +16,15 @@ public class Board {
     public Board(int[][] b) {
         n = 0;
         tiles = b;
+        Positions = new HashMap<Integer, int[]>();
         for(int i = 0; i < goal.length; i++){
             for(int j = 0; j < goal[0].length; j++) {
+//                System.out.print(i);
+//                System.out.println(j);
+//                System.out.println(goal[i][j]);
                 Positions.put(goal[i][j], new int[]{i,j});
             }
+//            System.out.println("  ");
         }
     }
 
@@ -88,8 +90,40 @@ public class Board {
      * is valid, add it to an accumulator.
      */
     public Iterable<Board> neighbors() {
-    	// TODO: Your code here
-        return null;
+        ArrayList<Board> answer = new ArrayList<Board>();
+        int[] pos = new int[2];
+        for(int i = 0; i < tiles.length; i++){
+            for(int j = 0; j < tiles[0].length; j++) {
+                if(tiles[i][j] == 0) {
+                    pos[0] = i;
+                    pos[1] = j;
+                }
+            }
+        }
+        for(int i = 0; i < 2; i++){
+            if(pos[i] > 0){
+                int[] move = pos.clone();
+                move[i] -= 1;
+                answer.add(new Board(examineSwitch(move, pos)));
+
+            }
+            if(pos[i] < tiles.length-1){
+                int[] move = pos.clone();
+                move[i] += 1;
+                answer.add(new Board(examineSwitch(move, pos)));
+            }
+        }
+        return answer;
+    }
+
+
+    public int[][] examineSwitch(int[] move, int[] zero){
+        int[][] newTiles = new int[tiles.length][];
+        for(int i = 0; i < tiles.length; i++)
+            newTiles[i] = tiles[i].clone();
+        newTiles[zero[0]][zero[1]] = tiles[move[0]][move[1]];
+        newTiles[move[0]][move[1]] = tiles[zero[0]][zero[1]];
+        return newTiles;
     }
 
     /*
