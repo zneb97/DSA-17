@@ -10,6 +10,7 @@ public class Solver {
     public int minMoves = -1;
     private State solutionState;
     private boolean solved = false;
+    private State root;
 
     /**
      * State class to make the cost calculations simple
@@ -26,8 +27,7 @@ public class Solver {
             this.board = board;
             this.moves = moves;
             this.prev = prev;
-            // TODO: Compute cost of board state according to A*
-            cost = 0;
+            cost = this.moves + board.manhattan();
         }
 
         @Override
@@ -51,8 +51,7 @@ public class Solver {
      * Return the root state of a given state
      */
     private State root(State state) {
-    	// TODO: Your code here
-        return null;
+        return root;
     }
 
     /*
@@ -61,22 +60,45 @@ public class Solver {
      * and a identify the shortest path to the the goal state
      */
     public Solver(Board initial) {
-    	// TODO: Your code here
+    	root = new State(initial, 0, null);
     }
 
     /*
      * Is the input board a solvable state
      */
     public boolean isSolvable() {
-    	// TODO: Your code here
-        return false;
+    	return root.board.solvable();
+    }
+
+    private int findMin(ArrayList<State> states){
+        int min = Integer.MAX_VALUE;
+        int index = -1;
+        for (int i = 0; i < states.size(); i++) {
+            if(states.get(i).cost < min){
+                min = states.get(i).cost;
+                index = i;
+            }
+        }
+        return min;
     }
 
     /*
      * Return the sequence of boards in a shortest solution, null if unsolvable
      */
     public Iterable<Board> solution() {
-    	// TODO: Your code here
+        if (!isSolvable()) {
+            return null;
+        }
+        ArrayList<State> open = new ArrayList<>();
+        ArrayList<State> close = new ArrayList<>();
+        open.add(root);
+
+        while(!open.isEmpty()){
+            int min = findMin(open);
+            State current = open.remove(min);
+            break;
+        }
+
         return null;
     }
 
