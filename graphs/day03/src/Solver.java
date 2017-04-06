@@ -3,7 +3,10 @@
  * Construct a tree of board states using A* to find a path to the goal
  */
 
+import com.sun.org.apache.xpath.internal.SourceTree;
+
 import java.util.*;
+import java.util.Arrays.*;
 
 public class Solver {
 
@@ -11,6 +14,7 @@ public class Solver {
     private State solutionState;
     private boolean solved = false;
     private State root;
+
 
     /**
      * State class to make the cost calculations simple
@@ -27,7 +31,7 @@ public class Solver {
             this.board = board;
             this.moves = moves;
             this.prev = prev;
-            cost = this.moves + board.manhattan();
+            cost = this.moves + this.board.manhattan();
         }
 
         @Override
@@ -45,13 +49,17 @@ public class Solver {
         public int compareTo(State s) {
             return this.cost - s.cost;
         }
+
     }
 
     /*
      * Return the root state of a given state
      */
     private State root(State state) {
-        return root;
+        while(state.prev != null){
+            state = state.prev;
+        }
+        return state;
     }
 
     /*
@@ -60,7 +68,48 @@ public class Solver {
      * and a identify the shortest path to the the goal state
      */
     public Solver(Board initial) {
-    	root = new State(initial, 0, null);
+        //Check if even worth trying
+        if(initial.solvable()) {
+            //Setup
+            root = new State(initial, 0, null);
+            PriorityQueue<State> open = new PriorityQueue<>();
+            Set<State> visited = new HashSet<>();
+
+            open.add(root);
+
+            while (!open.isEmpty()) {
+                State current = open.poll();
+                for (Board neighbor : current.board.neighbors()) {
+                    State next = new State(neighbor, current.moves + 1, current);
+                    boolean skip = false;
+                    //Done
+                    if (neighbor.isGoal()) {
+                        skip = true;
+                        solutionState = next;
+                        minMoves = solutionState.moves;
+                        open.clear();
+                    }
+
+                    //Check significance in path
+                    for (State state : open) {
+                        if (state.board.equals(next.board) && next.cost > state.cost) {
+                            skip = true;
+                        }
+                    }
+                    for (State state : visited) {
+                        if (state.board.equals(next.board) && next.cost > state.cost) {
+                            skip = true;
+                        }
+                    }
+
+                    if (!skip) {
+                        open.add(next);
+                    }
+                } //End of current state neighbors
+                visited.add(current);
+            } //No more states
+            solved = true;
+        }
     }
 
     /*
@@ -86,20 +135,25 @@ public class Solver {
      * Return the sequence of boards in a shortest solution, null if unsolvable
      */
     public Iterable<Board> solution() {
-        if (!isSolvable()) {
-            return null;
+        List<Board> solution = new ArrayList<>();
+        while (solutionState.prev != null) {
+            solution.add(0, solutionState.board);
+            solutionState = solutionState.prev;
         }
-        ArrayList<State> open = new ArrayList<>();
-        ArrayList<State> close = new ArrayList<>();
-        open.add(root);
+        return solution;
+    }
 
-        while(!open.isEmpty()){
-            int min = findMin(open);
-            State current = open.remove(min);
-            break;
+    /*
+    * Converts board tiles to easily hashable string
+     */
+    public static String convertBoard(Board b){
+        String hash = "";
+        for (int i = 0; i < b.tiles.length; i++) {
+            for (int j = 0; j < b.tiles[0].length; j++) {
+                hash += Integer.toString(b.tiles[i][j]);
+            }
         }
-
-        return null;
+        return hash;
     }
 
     public State find(Iterable<State> iter, Board b) {
@@ -117,19 +171,39 @@ public class Solver {
      * states
      */
     public static void main(String[] args) {
-        int[][] initState = {{8, 6, 7}, {2, 5, 4}, {3, 0, 1}};
-        Board initial = new Board(initState);
-
-        // Solve the puzzle
-        Solver solver = new Solver(initial);
-        if (!solver.isSolvable())
-            System.out.println("No solution");
-        else {
-            for (Board board : solver.solution()) {
-                board.printBoard();
-            }
-            System.out.println(solver.minMoves);
+        PriorityQueue<Integer> test = new PriorityQueue<>(Collections.reverseOrder());
+        test.add(3);
+        test.add(4);
+        test.add(1);
+        test.add(8);
+        test.add(3);
+        test.add(1);
+        for (int i = 0; i < 5; i++) {
+            System.out.println(test.poll());
         }
+
+//        int[][] initState = {{8, 6, 7}, {2, 5, 4}, {3, 0, 1}};
+//        int[][] initState2 = {{8, 6, 7}, {2, 5, 4}, {3, 0, 1}};
+//        Board initial = new Board(initState);
+//
+//        String hash = "";
+//        for (int i = 0; i < initState.length; i++) {
+//            for (int j = 0; j < initState[0].length; j++) {
+//                hash += Integer.toString(initState[i][j]);
+//            }
+//        }
+//        System.out.println(hash);
+
+//        // Solve the puzzle
+//        Solver solver = new Solver(initial);
+//        if (!solver.isSolvable())
+//            System.out.println("No solution");
+//        else {
+//            for (Board board : solver.solution()) {
+//                board.printBoard();
+//            }
+//            System.out.println(solver.minMoves);
+//        }
     }
 
 
