@@ -55,32 +55,41 @@ public class Board {
      * Compare the current state to the goal state
      */
     public boolean isGoal() {
-        return (manhattan()==0);
+        return (manhattan() == 0);
     }
 
     /*
      * Returns true if the board is solvable
      */
     public boolean solvable() {
-        int[] invertArray = new int[tiles.length * tiles.length];
+        int[] invertArray = new int[tiles.length * tiles.length - 1];
         int k = 0;
+        ArrayList<Integer> notchecked = new ArrayList<>();
         for(int i = 0; i < tiles.length; i++){
             for(int j = 0; j < tiles[0].length; j++) {
-                invertArray[k] = tiles[i][j];
-                k ++;
+                if(tiles[i][j] != 0){
+                    invertArray[k] = tiles[i][j];
+                    notchecked.add(invertArray[k]);
+                    k++;
+                }
             }
         }
         int numInvert = 0;
-        for(int j = 1; j < invertArray.length; j ++){
-            if(invertArray[j]< invertArray[j-1]){
-                numInvert++;
+
+        for(int j = 0; j < invertArray.length; j ++){
+            System.out.println(invertArray[j]);
+            notchecked.remove((Integer)invertArray[j]);
+            for(int i : notchecked) {
+                if (i < invertArray[j]) {
+                    numInvert++;
+                }
             }
         }
-
-        if(numInvert % 2 == 1){
-            return true;
+        System.out.println(numInvert);
+        if(numInvert % 2 != 0){
+            return false;
         }
-        return false;
+        return true;
     }
 
     /*

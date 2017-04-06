@@ -69,18 +69,20 @@ public class Solver {
      */
     public Solver(Board initial) {
         //Check if even worth trying
+        root = new State(initial, 0, null);
         if(initial.solvable()) {
             //Setup
-            root = new State(initial, 0, null);
             PriorityQueue<State> open = new PriorityQueue<>();
-            Set<State> visited = new HashSet<>();
+            Set<String> visited = new HashSet<>();
 
             open.add(root);
 
             while (!open.isEmpty()) {
                 State current = open.poll();
+                visited.add(convertBoard(current.board));
                 for (Board neighbor : current.board.neighbors()) {
                     State next = new State(neighbor, current.moves + 1, current);
+
                     boolean skip = false;
                     //Done
                     if (neighbor.isGoal()) {
@@ -92,21 +94,26 @@ public class Solver {
 
                     //Check significance in path
                     for (State state : open) {
-                        if (state.board.equals(next.board) && next.cost > state.cost) {
-                            skip = true;
+                        if (state.board.equals(next.board)) {
+                            if(next.cost >= state.cost){
+                                skip = true;
+                            }else{
+                                open.remove(state);
+                            }
                         }
                     }
-                    for (State state : visited) {
-                        if (state.board.equals(next.board) && next.cost > state.cost) {
-                            skip = true;
-                        }
-                    }
+//                    for (String hash : visited) {
+//                        if (hash.equals(next.board)) {
+//                            skip = true;
+//                        }
+//                    }
+                    if(visited.contains(convertBoard(next.board))) skip = true;
 
                     if (!skip) {
                         open.add(next);
                     }
                 } //End of current state neighbors
-                visited.add(current);
+
             } //No more states
             solved = true;
         }
