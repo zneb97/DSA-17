@@ -171,6 +171,8 @@ public class Board {
         return true;
     }
 
+
+
     public static void main(String[] args) {
         // DEBUG - Your solution can include whatever output you find useful
         int[][] initState = {{1, 2, 3}, {4, 0, 6}, {7, 8, 5}};
