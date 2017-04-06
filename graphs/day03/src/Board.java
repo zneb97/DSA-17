@@ -55,7 +55,7 @@ public class Board {
      * Compare the current state to the goal state
      */
     public boolean isGoal() {
-        return this.equals(goal);
+        return (manhattan()==0);
     }
 
     /*
@@ -78,9 +78,9 @@ public class Board {
         }
 
         if(numInvert % 2 == 1){
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     /*
