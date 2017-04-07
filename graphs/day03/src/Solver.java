@@ -86,10 +86,24 @@ public class Solver {
                     boolean skip = false;
                     //Done
                     if (neighbor.isGoal()) {
-                        skip = true;
-                        solutionState = next;
-                        minMoves = solutionState.moves;
-                        open.clear();
+                        if(minMoves == -1 || current.moves < minMoves) {
+                            skip = true;
+                            solutionState = next;
+                            minMoves = solutionState.moves;
+                            open.remove(solutionState);
+
+                            State cs = solutionState;
+                            int i = 0;
+//                            while(cs.prev != null){
+//                                System.out.println(i);
+//                                cs.board.printBoard();
+//                                cs = cs.prev;
+//                                i++;
+//                            }
+                            open.clear();
+                            break;
+                        }
+
                     }
 
                     //Check significance in path
