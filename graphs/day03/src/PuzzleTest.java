@@ -48,6 +48,10 @@ public class PuzzleTest {
         Board initial = new Board(initState);
         Solver solver = new Solver(initial);
         assertThat(solver.isSolvable(), is(false));
+        solver = new Solver(new Board(new int[][]{{1, 8, 2},{0,4,3},{7,6,5}}));
+        assertThat(solver.isSolvable(), is(true));
+        solver = new Solver(new Board(new int[][]{{8, 1, 2},{0,4,3},{7,6,5}}));
+        assertThat(solver.isSolvable(), is(false));
     }
 
     /**
