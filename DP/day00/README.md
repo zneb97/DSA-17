@@ -2,6 +2,8 @@
 
 If you want a refresher on today's lecture, check out this [MIT lecture](https://www.youtube.com/watch?v=OQ5jsbhAv_M), which also goes over a brief introduction to dynamic programming. We have included the general DP template, but do not feel compelled to use if you would rather not.
 
+*Note: It is not guaranteed that all of these problems' optimal solutions requires Dynamic Programming. It is up to you to determine if you should use DP in your solution(s)*
+
 ## Bills
 
 We want to make change for `N` dollars. GIven the denominations of all dollar bills, what is the least number of bills you need to make `N` dollars? For example, if you want to make 49 dollars using 1, 15, and 25 dollar bills, the answer is 7 (15, 15, 15, 1, 1, 1, 1).
