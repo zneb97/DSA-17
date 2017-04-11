@@ -2,7 +2,7 @@
 
 If you want a refresher on today's lecture, check out this [MIT lecture](https://www.youtube.com/watch?v=OQ5jsbhAv_M), which also goes over a brief introduction to dynamic programming. We have included the general DP template, but do not feel compelled to use if you would rather not.
 
-*Note: It is not guaranteed that all of these problems' optimal solutions requires Dynamic Programming. It is up to you to determine if you should use DP in your solution(s)*
+*Note: It is not guaranteed that all of these problems' optimal solutions require Dynamic Programming. It is up to you to determine if you should use DP in your solution(s)*
 
 ## Bills
 
