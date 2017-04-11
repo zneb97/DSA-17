@@ -5,4 +5,9 @@ public class Stocks {
         return -1;
     }
 
+    public static int maxProfitWithK(int[] prices, int k) {
+        // TODO: Optional
+        return -1;
+    }
+
 }
