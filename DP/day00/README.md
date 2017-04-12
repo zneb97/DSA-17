@@ -1,6 +1,6 @@
 # Introduction to Dynamic Programming
 
-If you want a refresher on today's lecture, check out this [MIT lecture](https://www.youtube.com/watch?v=OQ5jsbhAv_M), which also goes over a brief introduction to dynamic programming. Additionally, we highly recommend [this](https://www.topcoder.com/community/data-science/data-science-tutorials/dynamic-programming-from-novice-to-advanced/) dynammic programming tutorial.
+If you want a refresher on today's lecture, check out this [MIT lecture](https://www.youtube.com/watch?v=OQ5jsbhAv_M) and accompanying [notes](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/MIT6_006F11_lec19.pdf), which also goes over a brief introduction to dynamic programming. Additionally, we highly recommend [this](https://www.topcoder.com/community/data-science/data-science-tutorials/dynamic-programming-from-novice-to-advanced/) dynammic programming tutorial.
 
 For this homework, we have included the general DP template, but do not feel compelled to use if you would rather not.
 
