@@ -1,4 +1,3 @@
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,18 +11,14 @@ import static org.junit.Assert.assertThat;
 
 public class SplitCoinsTest {
 
-
     /**
      * Test method for {@link SplitCoins#splitCoins(int[])}.
      */
     @Test
     public void testSplitCoins() throws FileNotFoundException {
-
         for(int i = 1; i <= 11; i++){
-
             Scanner input = new Scanner(new File(
                     "testcases/divgold." + i + ".in"));
-
             Scanner output = new Scanner(new File(
                     "testcases/divgold." + i + ".out"));
 
@@ -37,8 +32,6 @@ public class SplitCoinsTest {
 
             input.close();
             output.close();
-
         }
-
     }
 }
