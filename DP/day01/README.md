@@ -14,7 +14,7 @@ Choose one of the problems below to do in the top-down method, one in the bottom
 
 ## Text Justification
 
-Given a body of text as an array of strings in order (`w`) and the maximum length (`m`) of a line, return an array of the indices of the first word of each line of justified text.  For example: 
+Given a body of text as an array of strings in order (`w`) and the maximum length (`m`) of a line, return a `List` of the indices of the first word of each line of justified text.  For example: 
 
 ```
 w = {"This", "is", "an", "example", "of", "text", "justification"}
