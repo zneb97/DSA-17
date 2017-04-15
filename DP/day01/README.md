@@ -2,7 +2,7 @@
 
 ## Resources
 
-The MIT lecture series covers both the text-justification and matrix-parenthesization problems we covered today in class: [MIT DP lecture 2](https://youtu.be/ENyox7kNKeY). We recommend at some point watching through the entire 4-video series, but the text-justification starts at [17:04](https://youtu.be/ENyox7kNKeY?t=17m4s) The parenthesization problem is presented in [lecture 3](https://youtu.be/ocZMDMZwhCY?t=2m50s). The corresponding lecture notes are in the course google drive.
+The MIT lecture series covers both the text-justification and matrix-parenthesization problems we covered today in class: [MIT DP lecture 2](https://youtu.be/ENyox7kNKeY). We recommend at some point watching through the entire 4-video series, but the text-justification starts at [17:04](https://youtu.be/ENyox7kNKeY?t=17m4s) The corresponding lecture notes are in the course google drive.
 
 ## Testing
 
