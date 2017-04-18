@@ -37,9 +37,9 @@ public class JustificationTest {
 
     @Test
     public void testJustifyText4() {
-        List<Integer> soln = Arrays.asList(0, 3, 5, 7, 9, 10, 11, 14, 16, 18, 19, 21, 22, 24, 26, 28, 29);
+        List<Integer> soln = Arrays.asList(0, 3, 5, 7, 9, 10);
         int m = 12;
-        String[] w = {"ACT", "I", "SCENE", "I.", "Elsinore.", "A", "platform", "before", "the", "castle.", "FRANCISCO", "at", "his", "post.", "Enter", "to", "him", "BERNARDO", "BERNARDO", "Who's", "there?", "FRANCISCO", "Nay,", "answer", "me:", "stand,", "and", "unfold", "yourself.", "BERNARDO"};
+        String[] w = {"ACT", "I", "SCENE", "I.", "Elsinore.", "A", "platform", "before", "the", "castle.", "FRANCISCO"};
         assertThat(TextJustification.justifyText(w, m), is(soln));
     }
 
