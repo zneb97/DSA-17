@@ -61,5 +61,24 @@ public class JustificationTest {
         assertThat(TextJustification.justifyText(w, m), is(soln));
     }
 
+    // These two do not have perfect solutions, but we believe there is only one correct solution. Let us know if you
+    // think there is a mistake.
+
+    @Test
+    public void testJustifyText7() {
+        List<Integer> soln = Arrays.asList(0, 1, 4, 6, 12, 16, 19, 24, 30, 32);
+        int m = 25;
+        String[] w = {"aaaaaaaaaaaaaaaaaaaaaaaaa","aaa","aaaa","aaaaaaaaaaaaaaaa","aaaaaaaaaaa","aaaaaaaaaaaa","aa","a","aaaa","a","aa","aaaaaaaaaa","aa","aaaaaa","aa","aaaaaaaaaa","a","aaaaaaa","aaaaaaaaaaaaa","a","a","aaaaa","aaaa","aaaaaaaa","aaaa","aa","aa","aaa","aa","aaaaaaa","aa","aaaaaaaaaaaaaaaaaaaa","aaaaaaaaaaaaaaaaaaaaaaaaa"};
+        assertThat(TextJustification.justifyText(w, m), is(soln));
+    }
+
+    @Test
+    public void testJustifyText8() {
+        List<Integer> soln = Arrays.asList(0, 4, 8, 12, 13, 16, 22, 24, 26, 32, 35, 41, 42, 43, 45, 49, 52, 55, 61, 67, 72, 75, 76, 77, 80, 83, 84, 85, 90, 92, 94, 96, 101, 107, 112, 113, 116, 122, 123, 124, 129, 131, 134, 136, 140, 142, 148, 154, 156, 159, 161, 162, 168, 170, 172, 173, 178, 183, 184, 187, 191, 195, 198, 200, 204, 207, 208, 211, 214, 217, 218, 222, 228, 233, 234, 239, 245, 249, 251, 254, 257, 260, 261, 263, 265, 268, 271, 272, 273, 276, 281, 286, 289, 295, 298, 303, 304, 307, 309, 314);
+        int m = 25;
+        String[] w = {"aa","aaaaaa","aaaaaa","aaaaaaa","a","a","aaaa","aaaaaaaaaaaaaaaa","a","a","aaaa","aaaaaaaaaaaaaaaa","aaaaaaaaaaaaaaaaaaaaaaaa","aaaaaa","aaa","aaaaaaaaaaaa","aaa","aa","a","aaaa","aa","aaaaaaa","aaaaa","aaaaaaaaaaaaaaaaaa","aaa","aaaaaaaaaaaaaaaaaaaaa","a","aaa","aa","aa","aa","aaaaaaaaa","aaaaaaa","aaaaaaaaaa","aaaa","a","aaaa","aaaa","a","aaa","aaaaa","aaaaaaaaaaaaaaaaaaaaaaaaa","aaaaaaaaaaaaaaaaaaaaaaa","aaaaaaaaaa","aaaaaaaaaaaaa","aaaaaaa","aaaa","aaaa","aaaaaa","aaaaaaaaa","aaaa","aaaaaaaaa","aaaaaaaa","aaaaaa","aaaaaaaaa","aaaa","aa","aaa","aa","aaa","aaaa","aaa","a","a","a","aaaa","aaaaaaaaa","aaa","aaa","aaa","aaaaa","aaaaa","aa","aaaaaaa","aaaaaaaaaaaaaa","aaaaaaaaaaaaaaaaaaaaaaaaa","aaaaaaaaaaaaaaaaaaaaaaaaa","aaaaaaa","a","aaaaaaaaaaaaa","aaaa","aa","aaaaaaaaaaaaaaaa","aaaaaaaaaaaaaaaaaaaaaaa","aaaaaaaaaaaaaaaaaaaaaaaaa","aaa","a","a","aaaa","aaaaaaaaaa","aaaaa","aaaaaaaaaaaaaaaaa","aaaaaaa","aaaaaaaaaaaaaaaa","aaaaaa","aaaaaaaaaaaaaaaa","aaaaa","aaaaa","aaaa","aaa","aa","a","aaaa","a","aaa","aaa","aaaaaa","aaaaa","aaaaa","a","aaaa","aaaa","aaaaaaaaaaaaaaaaaaaaaaa","aaaaaa","aaaa","aaaaaaaaaaaa","aaaa","a","aaa","aaaa","a","aaaaaaa","aaaaaaaaaaaaaaaaaaaaaaa","aaaaaaaaaaaaaaaaaaaaaaa","aaa","aaaaa","aaa","aaaaa","aaaaa","aaaa","aaaaaaaaaaaaaaaaaaaa","aaaaaaa","aaaaaa","aaaaaaaaaa","aaaaaaaaaaaaaa","aaaaaaaaaa","aaaaaa","aaaaaa","aaaa","aaaa","aaaaaaaaaaaaa","aaaaaaaaa","a","aaa","a","aaaa","aaa","aaaaaaaa","aaaa","aaaa","a","a","a","aaaaaaaa","aaaaa","aaaaaaaaaaaaaaaaaaa","a","a","aaaaaaaaaaaaaaaaaaaaa","aaa","aaaaaaaaaaaaaaaaaaaa","aaaaaaaaaaaaaaaaaaaaaaaaa","aaaa","aaaa","aaa","aaa","aaa","aaa","aaaaaaaaa","aaaaaaaaaaaaaa","aaaaaaaaaaa","aaaaaaaaaaa","aaaaaaaaaaaaaaaaaaaaaaaaa","a","aaaaa","aa","a","aaaaaaaaaaa","aaaaa","aaaaa","a","aaaa","aaaaa","aaaaaaaaaaaaaaaaaaaaaaaaa","aaaaaa","aaaaaaaaaa","aaaaa","aaaa","aaaaaa","a","aaaaaaaaa","aaaaaaa","aaa","aaaaaaa","aaa","aaaaaaaaaa","aaaaaaa","aaaaa","aaa","aaaaaaaaaaaaaaaaaaaaa","a","aaaa","aaaaaaa","aaaaaaaaaa","aaaaa","aaaaaaaaa","aaaaaaa","aaaaaaaaaaaaaaaaaaaaaaa","aaaaaaa","aaa","aaaaaaaaaaaa","aaaaaaa","aa","aaaaaaaaaaaaa","aaaaaaaaaa","aaaaaaaa","aaaaa","aaaaaaaaaaaaaaaaaaaaaaaa","aaaaa","aa","a","aaaaaaaaaaaaaa","a","aaa","a","aa","aaa","aaaaaaaaa","aaaa","a","aaaa","aaaaa","aaaaaaa","aaaaaaaaaaaaaaaaaaaaaaaaa","aaaa","aa","aaaaa","a","aaaaaaa","aa","a","aaa","a","aaaa","aaaaaaaaa","aaaaaa","aa","a","aaaaaaaaaaaa","aaaaaaaa","aaaaaaaaaaaaaaaa","aaaaaaaa","aaaaa","aaaaaaaaa","aa","aaaaaaaa","aaaaaaaaaaa","aaaaaaaaa","aaaaaaa","aaaaaaa","aaaaaaaaaaaaaaaaaaaaaaaaa","aaaaa","aaaaaaaaaaaaaaaaaaa","aaaaaa","aaaaaaaaaaaaaaaaa","aaaaaa","aaaa","aaaaaaaaaaa","aaaa","aaa","aaaaaaaaaaaaaa","aaaaaaaaaaaaaaaaaaaaaaa","aaaaaaaaaaaaaaaaaaaaaaaaa","aaaaaa","aaaaa","aaaaaaaaaaa","a","aaaa","aaaa","a","aaaaaaaaaa","aaa","aaaaa","aa","a","aaaaaaaaa","a","aa","aaaaaaaaaaaaaaaaaaa","aa","a","aaa","aa","aa","aaaaaaaaaa","aa","aaa","aaaaaaaaaaaaaaaaa","aaaa","aaaa","aaaaa","aa","aaaaaa","aaaaaaaaaaaaaaaaaaaaaaaa","aaaaaaaaa","aaaaaaaa","aaaa","aaaaaaaaaa","aaaaaaaaaaaaa","a","aaaa","a","aaaa","aaaaaaaaaaa","aaaaa","aaa","aaaaaaaaaaaaa"};
+        assertThat(TextJustification.justifyText(w, m), is(soln));
+    }
+
     // TODO: add more test cases here
 }
