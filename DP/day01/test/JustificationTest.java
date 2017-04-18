@@ -70,8 +70,7 @@ public class JustificationTest {
         assertCorrectSoln(soln, TextJustification.justifyText(w, m), w, m);
     }
 
-    // These two test cases are to ensure that your code is efficient. There should only be one correct solution for
-    // each case, because for both you can perfectly pack every single line if you set your line breaks correctly
+    // For these two cases, you can perfectly pack every single line if you set your line breaks correctly
 
     @Test
     public void testJustifyText5() {
@@ -89,8 +88,7 @@ public class JustificationTest {
         assertCorrectSoln(soln, TextJustification.justifyText(w, m), w, m);
     }
 
-    // These two do not have perfect solutions, but we believe there is only one correct solution. Let us know if you
-    // think there is a mistake.
+    // These two tests do not have perfect solutions, but you can always get at least m-2 chars on a line
 
     @Test
     public void testJustifyText7() {
