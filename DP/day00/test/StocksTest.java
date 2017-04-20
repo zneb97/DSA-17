@@ -37,28 +37,28 @@ public class StocksTest {
         }
     }
 
-    /**
-     * Test method for {@link Stocks#maxProfitWithK(int[], int)}}.
-     */
-    @Test
-    public void testMaxProfitWithK() throws FileNotFoundException {
-        for(int i = 1; i <= 9; i++){
-            Scanner input = new Scanner(new File(
-                    "testcases/maxprofitk." + i + ".in"));
-            Scanner output = new Scanner(new File(
-                    "testcases/maxprofitk." + i + ".out"));
-
-            int n = input.nextInt();
-            int k = input.nextInt();
-            int[] prices = new int[n];
-            for(int j = 0; j < n; j++){
-                prices[j] = input.nextInt();
-            }
-
-            assertEquals(output.nextInt(),new Stocks().maxProfitWithK(prices,k));
-
-            input.close();
-            output.close();
-        }
-    }
+//    /**
+//     * Test method for {@link Stocks#maxProfitWithK(int[], int)}}.
+//     */
+//    @Test
+//    public void testMaxProfitWithK() throws FileNotFoundException {
+//        for(int i = 1; i <= 9; i++){
+//            Scanner input = new Scanner(new File(
+//                    "testcases/maxprofitk." + i + ".in"));
+//            Scanner output = new Scanner(new File(
+//                    "testcases/maxprofitk." + i + ".out"));
+//
+//            int n = input.nextInt();
+//            int k = input.nextInt();
+//            int[] prices = new int[n];
+//            for(int j = 0; j < n; j++){
+//                prices[j] = input.nextInt();
+//            }
+//
+//            assertEquals(output.nextInt(),new Stocks().maxProfitWithK(prices,k));
+//
+//            input.close();
+//            output.close();
+//        }
+//    }
 }
